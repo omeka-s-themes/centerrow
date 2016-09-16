@@ -171,13 +171,9 @@ a.button {
 }
 
 .field .inputs ~ *,
-#advanced-search input[type="submit"] {
+form input[type="submit"] {
     margin-left: calc(#{span(4 of 16)} + #{gutter()});
     margin-top: $spacing-m;
-}
-
-.field .inputs * {
-    max-width: 100%;
 }
 
 #advanced-search select {
