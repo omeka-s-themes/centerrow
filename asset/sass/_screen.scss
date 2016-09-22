@@ -301,19 +301,20 @@ header a {
     text-decoration: none;
 }
 
-#site-title {
+.site-title {
     font-size: 1.5 * $base-font-size;
     text-transform: uppercase;
     letter-spacing: .125em;
     margin: (2 * $spacing-l) 0 0;
-}
-
-#site-title a {
     display: block;
     vertical-align: top;
+
+    &:hover {
+        text-decoration: none;
+    }
 }
 
-#site-title img {
+.site-title img {
     max-height: (3 * $spacing-l);
     max-width: 100%;
 }
