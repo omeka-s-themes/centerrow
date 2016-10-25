@@ -816,6 +816,7 @@ footer {
     flex-basis: content;
     width: min-content;
     max-width: 100%;
+    margin: 0 $spacing-l $spacing-l;
 
     img {
         max-width: 100%;
@@ -862,7 +863,7 @@ footer {
     flex-wrap: wrap;
     width: 100%;
     clear: both;
-    justify-content: space-between;
+    justify-content: center;
     margin: $spacing-l 0;
 }
 
