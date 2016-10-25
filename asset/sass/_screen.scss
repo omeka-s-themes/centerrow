@@ -171,6 +171,10 @@ textarea {
     text-align: right;
 }
 
+.required.field .field-meta:after {
+    content: "*";
+}
+
 .field .field-meta legend {
     float: right;
 }
@@ -828,7 +832,6 @@ footer {
 .file .resource h3 {
     font-size: $base-font-size;
     margin: (.5 * $base-line-height) 0 0;
-    word-break: break-all;
 }
 
 .media-render {
