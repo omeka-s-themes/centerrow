@@ -653,14 +653,45 @@ footer {
 .property .value {
     width: span(13 of 16);
     padding: 0 gutter();
+
+    &:not(:last-child) {
+        border-bottom: 1px solid $gray;
+        padding-bottom: $spacing-m - 1px;
+        margin-bottom: $spacing-m;
+    }
 }
 
 .property .value > *:first-child {
     margin-top: 0;
 }
 
+.property .value img {
+    height: 1.5 * $base-line-height;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.property .value .language {
+    display: inline-block;
+    padding: 0 $spacing-s;
+    border: 1px solid $gray;
+}
+
 #itemfiles .chocolat-overlay {
     background-color: #000;
+}
+
+.media-list {
+    width: span(13 of 16);
+    float: right;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.media-list img {
+    margin: 0 $spacing-m $spacing-m 0;
+    vertical-align: bottom;
 }
 
 /* @end */
@@ -889,6 +920,20 @@ footer {
 
 .breadcrumbs {
     margin-bottom: $spacing-l;
+}
+
+.item-with-metadata .resource.show {
+    clear: both;
+    margin: (2 * $spacing-l) 0;
+    overflow: hidden;
+}
+
+/* @end */
+
+/* @group ----- Common Modules ----- */
+
+a.metadata-browse-link {
+    display: block;
 }
 
 /* @end */

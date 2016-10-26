@@ -11,14 +11,14 @@ footer {
 
 .field .label,
 .field label,
-.field .two.columns {
+.field .field-meta,
+.media-list {
     width: 100%;
     text-align: left;
     margin-bottom: $spacing-s;
 }
 
-.field .inputs,
-.field .five.columns {
+.field .inputs{
     width: 100%;
 }
 
@@ -96,8 +96,8 @@ header nav .navigation {
 
 /* @group ----- Show ----- */
 
-.element h3,
-.element .element-text {
+.property h4,
+.property .value {
     width: 100%;
     text-align: left;
 }
@@ -113,24 +113,6 @@ header nav .navigation {
 
 #search-results {
     margin-top: $spacing-m;
-}
-
-/* @end */
-
-/* @group ----- Exhibits ----- */
-
-.exhibits #primary,
-#exhibit-pages,
-#exhibit-blocks,
-#exhibit-page-navigation  {
-    width: 100%;
-    float: none;
-    overflow: hidden;
-}
-
-#exhibit-pages {
-    margin: (2 * $spacing-l) 0;
-    text-align: center;
 }
 
 /* @end */
