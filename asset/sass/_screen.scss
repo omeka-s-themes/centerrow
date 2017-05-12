@@ -678,6 +678,11 @@ footer {
     border: 1px solid $gray;
 }
 
+.property .value table {
+    margin: 0;
+    width: 100%;
+}
+
 #itemfiles .chocolat-overlay {
     background-color: #000;
 }
