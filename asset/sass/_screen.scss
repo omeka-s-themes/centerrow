@@ -214,6 +214,25 @@ form input[type="submit"] {
     padding: $spacing-s;
 }
 
+#advanced-search .remove-value {
+    text-indent: -9999px;
+    position: relative;
+    width: 1.25 * $spacing-l;
+    height: 1.25 * $spacing-l;
+    margin-left: $spacing-s;
+
+    &:before {
+        content: "\f014";
+        text-indent: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        line-height: 1.25 * $base-line-height;
+    }
+}
+
 .search-entry:not(:first-child) {
     margin-top: $spacing-m;
 }
