@@ -50,7 +50,7 @@ $objects = $item->objectValues();
 <div id="item-linked" class="section property">
     <h4><?php echo $this->translate('Linked Resources'); ?></h4>
     <div class="value">
-    <?php echo $item->displayLinkedResources(); ?>
+        <?php echo $item->displayLinkedResources(['subjectValues' => $subjects, 'objectValues' => '']); ?>
     </div>
 </div>
 <?php endif; ?>
