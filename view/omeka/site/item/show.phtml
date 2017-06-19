@@ -4,7 +4,13 @@ $this->htmlElement('body')->appendAttribute('class', 'item resource show');
 $this->headScript()->prependFile($this->assetUrl('js/jquery.chocolat.min.js'));
 $this->headLink()->prependStylesheet($this->assetUrl('css/chocolat.css'));
 $subjects = $item->subjectValues();
-$objects = $item->objectValues();
+$sortedSubjects = [];
+$subjects = $item->subjectValues();
+foreach ($subjects as $value) {
+    $resource = $value->resource();
+    $property = $value->property();
+    $sortedSubjects[$property->label()][] = $resource;
+}
 ?>
 
 <script>
@@ -46,11 +52,25 @@ $objects = $item->objectValues();
 </div>
 <?php endif; ?>
 
-<?php if ($subjects || $objects): ?>
-<div id="item-linked" class="section property">
-    <h4><?php echo $this->translate('Linked Resources'); ?></h4>
-    <div class="value">
-        <?php echo $item->displayLinkedResources(['subjectValues' => $subjects, 'objectValues' => '']); ?>
+<?php if ($subjects): ?>
+<div id="item-linked">
+    <h3><?php echo $this->translate('Linked resources'); ?></h3>
+    <div class="property">
+    <?php foreach ($sortedSubjects as $property => $resources): ?>
+        <h4><?php echo $this->translate(sprintf('As "%s"', $property)); ?></h4>
+        <?php foreach ($resources as $resource): ?>
+        <div class="resource value">
+                <?php if ($thumbnail = $resource->primaryMedia()): ?>
+                <a href="<?php echo $resource->url(); ?>"><img
+                    src="<?php echo $escape($thumbnail->thumbnailUrl('square')); ?>"
+                    title="<?php echo $escape($thumbnail->displayTitle()); ?>"
+                    alt="<?php echo $escape($thumbnail->mediaType()); ?> thumbnail"
+                ></a>
+            <?php endif; ?>
+            <?php echo $resource->link($resource->displayTitle()); ?>
+        </div>
+        <?php endforeach; ?>
+    <?php endforeach; ?>
     </div>
 </div>
 <?php endif; ?>
