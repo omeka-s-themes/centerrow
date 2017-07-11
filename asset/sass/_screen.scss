@@ -624,27 +624,53 @@ footer {
 
 /* @group ----- Show ----- */
 
-#itemfiles {
+#itemfiles,
+.lSSlideOuter .media-render {
     margin: 0;
-    background-color: $gray;
+    background-color: rgba(0,0,0,.8);
+    width: 100%;
 }
 
-#itemfiles .item-file {
+#itemfiles {
+    margin: 0 auto $spacing-l;
     text-align: center;
+    min-height: 50vh !important;
 }
 
-#itemfiles .item-file > *,
-#itemfiles .item-file img {
-    margin: 0 auto;
-    max-height: 50vh;
+#itemfiles li {
+    bottom: 0;
 }
 
-#itemfiles-nav {
-    margin: $spacing-l auto;
-    text-align: center
+.lSSlideOuter ul.lSPager.lSGallery {
+    margin: auto;
+    margin-bottom: $spacing-l;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
-#itemfiles-nav img {
+.lSSlideOuter .media-render {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lSSlideOuter .media-render a {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lSSlideOuter .media-render img {
+    max-height: 100%;
+    width: auto;
+}
+
+.lSPager img {
+    margin: 0 $spacing-m $spacing-m 0;
+    vertical-align: bottom;
     width: 3 * $spacing-l;
 }
 
@@ -699,23 +725,6 @@ footer {
 .property .value table {
     margin: 0;
     width: 100%;
-}
-
-#itemfiles .chocolat-overlay {
-    background-color: #000;
-}
-
-.media-list {
-    width: span(13 of 16);
-    float: right;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-}
-
-.media-list img {
-    margin: 0 $spacing-m $spacing-m 0;
-    vertical-align: bottom;
 }
 
 /* @end */
