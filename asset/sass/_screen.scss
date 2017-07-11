@@ -899,16 +899,16 @@ footer {
     margin: (.5 * $base-line-height) 0 0;
 }
 
-.media-render {
+.page .media-render {
     display: flex;
     flex-basis: min-content;
 }
 
-.media-render a {
+.page .media-render a {
     display: block;
 }
 
-.media-render img {
+.page .media-render img {
     vertical-align: top;
 }
 
