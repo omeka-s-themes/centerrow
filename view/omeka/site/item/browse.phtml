@@ -1,7 +1,9 @@
 <?php $escape = $this->plugin('escapeHtml');?>
-<?php $this->htmlElement('body')->appendAttribute('class', 'item resource browse'); ?>
+<?php $this->htmlElement('body')->appendAttribute('class', 'item resource browse');
+$query = $this->params()->fromQuery(); ?>
 <?php if (isset($itemSet)): ?>
-<?php $this->htmlElement('body')->appendAttribute('class', 'item-set'); ?>
+<?php $this->htmlElement('body')->appendAttribute('class', 'item-set');
+    $query['item_set_id'] = $itemSet->id(); ?>
 <?php endif; ?>
 
 <?php if (isset($itemSet)): ?>
@@ -16,7 +18,7 @@
 <?php endif; ?>
 
 <?php echo $this->searchFilters(); ?>
-<?php echo $this->hyperlink($this->translate('Advanced search'), $this->url(null, ['action' => 'search'], true), ['class' => 'advanced-search']); ?>
+<?php echo $this->hyperlink($this->translate('Advanced search'), $this->url('site/resource', ['controller' => 'item', 'action' => 'search'], ['query' => $query], true), ['class' => 'advanced-search']); ?>
 <?php echo $this->pagination(); ?>
 <ul class="resource-list">
     <?php foreach ($items as $item): ?>
