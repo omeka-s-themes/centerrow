@@ -10,7 +10,7 @@ $this->headLink()->prependStylesheet('//fonts.googleapis.com/css?family=Crimson+
 $this->headScript()->prependFile($this->assetUrl('js/centerrow.js'));
 $this->headScript()->prependFile($this->assetUrl('vendor/jquery/jquery.min.js', 'Omeka'));
 $this->trigger('view.layout');
-$userBar = ($this->identity()) ? $this->partial('common/user-bar', ['site' => $site]) : '';
+$userBar = $this->partial('common/user-bar', ['site' => $site]);
 ?>
 <?php echo $this->doctype(); ?>
 <?php echo $this->htmlElement('html'); ?>
