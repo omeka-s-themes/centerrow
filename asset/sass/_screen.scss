@@ -695,7 +695,8 @@ footer {
     font-size: $base-font-size;
 }
 
-.property .value {
+.property .values,
+.property h4 + .value {
     width: span(13 of 16);
     padding: 0 gutter();
 
