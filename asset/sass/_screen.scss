@@ -467,7 +467,7 @@ header a {
     margin: 0;
 }
 
-#content > h2:first-of-type {
+#content .blocks > h2:first-of-type {
     text-align: center;
     font-size: 2 * $base-font-size;
     margin-bottom: $spacing-l;
@@ -828,42 +828,58 @@ footer {
 
 /* @group ----- Pages ----- */
 
-.site-page-pagination {
+.page .site-page-pagination {
     clear: both;
     border-top: 1px solid $gray;
     padding-top: $spacing-m - 1px;
     margin-top: 2 * $spacing-l;
 }
 
-#content .sub-menu {
-    padding: 0 gutter() $spacing-l 0;
-    width: span(2 of 16);
-    float: left;
+.page #content {
+    display: flex;
+    flex-wrap: wrap;
 }
 
-#content .sub-menu > ul {
+.page #content .breadcrumbs {
+    width: 100%;
+}
+
+.page #content .breadcrumbs + .blocks {
+    width: 100%;
+}
+
+.page #content .sub-menu {
+    padding: 0 gutter() $spacing-l 0;
+    width: span(2 of 16);
+}
+
+.page #content .sub-menu + .blocks {
+    width: span(14 of 16);
+}
+
+.page #content .sub-menu > ul {
     margin: 0;
 }
 
-#content .sub-menu a {
+.page #content .sub-menu a {
     font-size: .875 * $base-font-size;
     color: #676767;
 }
 
-#content .sub-menu .current a {
+.page #content .sub-menu .current a {
     color: $red;
 }
 
-#content .sub-menu > ul > li {
+.page #content .sub-menu > ul > li {
     padding: $spacing-s - 1px;
 }
 
-#content .sub-menu > ul > li:not(:last-of-type) {
+.page #content .sub-menu > ul > li:not(:last-of-type) {
     border-bottom: 1px solid $gray;
     margin-bottom: $spacing-s;
 }
 
-#content .sub-menu h4 {
+.page #content .sub-menu h4 {
     border-bottom: 1px solid $gray;
     padding-bottom: $spacing-s - 1px;
     margin: 0 0 $spacing-s;
