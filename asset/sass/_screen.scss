@@ -829,10 +829,10 @@ footer {
 /* @group ----- Pages ----- */
 
 .page .site-page-pagination {
-    clear: both;
     border-top: 1px solid $gray;
     padding-top: $spacing-m - 1px;
     margin-top: 2 * $spacing-l;
+    width: 100%;
 }
 
 .page #content {
@@ -853,7 +853,7 @@ footer {
     width: span(2 of 16);
 }
 
-.page #content .sub-menu + .blocks {
+.page #content .sub-menu ~ *:not(.site-page-pagination) {
     width: span(14 of 16);
 }
 
