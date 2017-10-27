@@ -70,14 +70,7 @@ foreach ($item->media() as $media) {
         <h4><?php echo $this->translate(sprintf('As "%s"', $property)); ?></h4>
         <?php foreach ($resources as $resource): ?>
         <div class="resource value">
-                <?php if ($thumbnail = $resource->primaryMedia()): ?>
-                <a href="<?php echo $resource->url(); ?>"><img
-                    src="<?php echo $escape($thumbnail->thumbnailUrl('square')); ?>"
-                    title="<?php echo $escape($thumbnail->displayTitle()); ?>"
-                    alt="<?php echo $escape($thumbnail->mediaType()); ?> thumbnail"
-                ></a>
-            <?php endif; ?>
-            <?php echo $resource->link($resource->displayTitle()); ?>
+            <?php echo $resource->linkPretty(); ?>
         </div>
         <?php endforeach; ?>
     <?php endforeach; ?>
