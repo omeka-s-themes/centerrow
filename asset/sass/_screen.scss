@@ -682,7 +682,8 @@ footer {
     clear: both;
 }
 
-.property h4 {
+.property h4,
+#linked-resources h4 {
     width: span(3 of 16);
     margin: 0;
     text-align: right;
@@ -726,6 +727,76 @@ footer {
 .property .value table {
     margin: 0;
     width: 100%;
+}
+
+#linked-resources {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.linked-header,
+.linked-footer {
+    width: 100%;
+    margin-bottom: $spacing-l;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#linked-filter {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    justify-content: flex-start;
+    margin-right: auto;
+}
+
+#linked-filter h4 {
+    font-size: $base-font-size;
+    width: auto;
+    padding: 0;
+    margin-right: $spacing-s;
+    text-align: left;
+}
+
+#linked-resources > h4 {
+    padding: $spacing-s gutter();
+}
+
+#item-linked .pagination {
+    width: 50%;
+    text-align: right;
+}
+
+#item-linked .resource-link img {
+    height: 1.5 * $spacing-l;
+    width: auto;
+    display: block;
+    margin-right: $spacing-s;
+}
+
+#linked-resources .linked-resource {
+    border-bottom: 1px solid $gray;
+    margin-bottom: $spacing-m;
+    width: span(13 of 16);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 gutter() #{$spacing-m - 1px};
+}
+
+#linked-resources .resource-link {
+    display: flex;
+    align-items: center;
+}
+
+#linked-resources .resource-class {
+    padding: 0 $spacing-s;
+    border: 1px solid $gray;
+    margin-bottom: $spacing-s;
+    display: inline-block;
 }
 
 /* @end */

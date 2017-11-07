@@ -101,9 +101,32 @@ header nav .navigation {
 /* @group ----- Show ----- */
 
 .property h4,
-.property .value {
+.property .values,
+#linked-filter,
+#linked-resources .pagination,
+#linked-resources > h4,
+#linked-resources .linked-resource {
     width: 100%;
     text-align: left;
+}
+
+.linked-header,
+.linked-footer {
+    flex-wrap: wrap;
+    margin-bottom: 0;
+}
+
+#linked-filter {
+    margin-bottom: $spacing-l;
+}
+
+#linked-resources .resource-class {
+    flex: 1;
+    text-align: center;
+}
+
+#linked-resources .resource-link {
+    flex: 2;
 }
 
 /* @end */
