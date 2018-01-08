@@ -761,6 +761,21 @@ footer {
     text-align: left;
 }
 
+#linked-resources table {
+    width: 100%;
+    margin-top: 0;
+}
+
+#linked-resources td {
+    vertical-align: middle;
+}
+
+#linked-resources caption {
+    text-align: left;
+    font-weight: bold;
+    margin: $spacing-s $spacing-m;
+}
+
 #linked-resources > h4 {
     padding: $spacing-s gutter();
 }
@@ -781,22 +796,12 @@ footer {
     border-bottom: 1px solid $gray;
     margin-bottom: $spacing-m;
     width: span(13 of 16);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     padding: 0 gutter() #{$spacing-m - 1px};
 }
 
 #linked-resources .resource-link {
     display: flex;
     align-items: center;
-}
-
-#linked-resources .resource-class {
-    padding: 0 $spacing-s;
-    border: 1px solid $gray;
-    margin-bottom: $spacing-s;
-    display: inline-block;
 }
 
 /* @end */
