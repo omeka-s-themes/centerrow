@@ -11,7 +11,7 @@ $this->headScript()->prependFile($this->assetUrl('js/centerrow.js'));
 $this->headScript()->prependFile($this->assetUrl('js/global.js', 'Omeka'));
 $this->headScript()->prependFile($this->assetUrl('vendor/jquery/jquery.min.js', 'Omeka'));
 $this->trigger('view.layout');
-$userBar = $this->partial('common/user-bar', ['site' => $site]);
+$userBar = $this->userBar();
 ?>
 <?php echo $this->doctype(); ?>
 <?php echo $this->htmlElement('html'); ?>
@@ -34,7 +34,7 @@ $userBar = $this->partial('common/user-bar', ['site' => $site]);
                 <?php endif; ?>
                 <div id="search-container">
                     <?php echo $this->partial('common/search-form'); ?>
-                    <button type="button" class="search-toggle" title="Toggle search"></button>
+                    <   button type="button" class="search-toggle" title="Toggle search"></button>
                 </div>
                 <nav>
                 <?php
