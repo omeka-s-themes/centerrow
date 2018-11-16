@@ -699,12 +699,12 @@ footer {
 .property h4 + .value {
     width: span(13 of 16);
     padding: 0 gutter();
+}
 
-    &:not(:last-child) {
-        border-bottom: 1px solid $gray;
-        padding-bottom: $spacing-m - 1px;
-        margin-bottom: $spacing-m;
-    }
+.property .values .value:not(:last-child) {
+    border-bottom: 1px solid $gray;
+    padding-bottom: $spacing-m - 1px;
+    margin-bottom: $spacing-m;
 }
 
 .property .value > *:first-child {

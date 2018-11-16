@@ -39,9 +39,11 @@ foreach ($item->media() as $media) {
 <?php if (count($otherMedia) > 0): ?>
 <div id="other-media" class="property">
     <h4><?php echo $this->translate('Other Media'); ?></h4>
-    <?php foreach($otherMedia as $media): ?>
-    <div class="value">
-        <a href="<?php echo $media->siteUrl(); ?>"><?php echo $media->displayTitle(); ?></a>
+    <div class="values">
+        <?php foreach($otherMedia as $media): ?>
+        <div class="value">
+            <a href="<?php echo $media->siteUrl(); ?>"><?php echo $media->displayTitle(); ?></a>
+        </div>
     </div>
     <?php endforeach; ?>
 </div>
@@ -51,9 +53,11 @@ foreach ($item->media() as $media) {
 <?php if (count($itemSets) > 0): ?>
 <div class="property">
     <h4><?php echo $this->translate('Item sets'); ?></h4>
-    <?php foreach ($item->itemSets() as $itemSet): ?>
-    <div class="value"><a href="<?php echo $escape($itemSet->url()); ?>"><?php echo $itemSet->displayTitle(); ?></a></div>
-    <?php endforeach; ?>
+    <div class="values">
+        <?php foreach ($item->itemSets() as $itemSet): ?>
+        <div class="value"><a href="<?php echo $escape($itemSet->url()); ?>"><?php echo $itemSet->displayTitle(); ?></a></div>
+        <?php endforeach; ?>
+    </div>
 </div>
 <?php endif; ?>
 
