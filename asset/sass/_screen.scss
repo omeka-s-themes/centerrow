@@ -568,19 +568,60 @@ footer {
     float: right;
 }
 
+.layout-toggle button {
+    width: 1.5 * $spacing-l;
+}
+
+.o-icon-grid:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f009";
+}
+
+.o-icon-list:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f03a";
+}
+
 .resource-list {
     padding-left: 0;
-    list-style: none;
+    list-style: none;  
+}
+
+.resource-list.grid {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     clear: both;
+    
+    .resource {
+        padding: $spacing-l gutter();
+        width: 25%;
+        font-size: .875 * $base-font-size;
+    }
 }
 
-.resource-list .resource {
-    padding: $spacing-l gutter();
-    width: 25%;
-    font-size: .875 * $base-font-size;
+.resource-list.list {
+    border-top: 1px solid $gray;
+    
+    .thumbnail {
+        margin-right: gutter(8);
+    }
+
+    .resource {
+        display: flex;
+        justify-content: flex-end;
+        border-bottom: 1px solid $gray;
+        padding: $spacing-l 0;
+    }
+
+    .resource-meta {
+        width: 75%;
+
+    }
+    
+    h4 {
+        margin-top: 0;
+    }
 }
 
 #collection-items h2 {

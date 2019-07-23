@@ -1,6 +1,7 @@
 <?php
 $escape = $this->plugin('escapeHtml');
 $translate = $this->plugin('translate');
+$this->headScript()->appendFile($this->assetUrl('js/browse.js'));
 
 $this->htmlElement('body')->appendAttribute('class', 'item resource browse');
 
@@ -49,7 +50,7 @@ $sortHeadings = [
     <?php echo $this->hyperlink($translate('Advanced search'), $this->url('site/resource', ['controller' => 'item', 'action' => 'search'], ['query' => $query], true), ['class' => 'advanced-search']); ?>
     <?php echo $this->sortSelector($sortHeadings); ?>
     <div class="layout-toggle">
-        <button type="button" aria-label="<?php echo $translate('Grid'); ?>" class="grid o-icon-grid"></button>
+        <button type="button" aria-label="<?php echo $translate('Grid'); ?>" class="grid o-icon-grid" disabled></button>
         <button type="button" aria-label="<?php echo $translate('List'); ?>" class="list o-icon-list"></button>        
     </div>
 </div>
@@ -66,10 +67,12 @@ $sortHeadings = [
     ?>
     <li class="item resource">
         <?php if ($thumbnail = $this->thumbnail($item, 'medium')): ?>
-        <?php echo $item->linkRaw($thumbnail); ?>
+        <?php echo $item->linkRaw($thumbnail, null, ['class' => 'thumbnail']); ?>
         <?php endif; ?>
-        <h4><?php echo $heading; ?></h4>
-        <div class="date"><?php echo $body; ?></div>
+        <div class="resource-meta">
+            <h4><?php echo $heading; ?></h4>
+            <div class="date"><?php echo $body; ?></div>
+        </div>
     </li>
     <?php endforeach; ?>
 </ul>
