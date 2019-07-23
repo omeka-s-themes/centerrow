@@ -48,8 +48,12 @@ $sortHeadings = [
     <?php echo $this->pagination(); ?>
     <?php echo $this->hyperlink($translate('Advanced search'), $this->url('site/resource', ['controller' => 'item', 'action' => 'search'], ['query' => $query], true), ['class' => 'advanced-search']); ?>
     <?php echo $this->sortSelector($sortHeadings); ?>
+    <div class="layout-toggle">
+        <button type="button" aria-label="<?php echo $translate('Grid'); ?>" class="grid o-icon-grid"></button>
+        <button type="button" aria-label="<?php echo $translate('List'); ?>" class="list o-icon-list"></button>        
+    </div>
 </div>
-<ul class="resource-list">
+<ul class="resource-list grid">
     <?php
     $headingTerm = $this->siteSetting('browse_heading_property_term');
     $bodyTerm = $this->siteSetting('browse_body_property_term');
