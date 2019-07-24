@@ -76,23 +76,40 @@ header nav .navigation {
     padding: $spacing-l 0;
 }
 
-.browse .hentry,
-#collection-items .hentry {
-    width: 100%;
-    border: 1px solid $gray;
+.browse .grid {
+    justify-content: flex-start;
+}
+
+.browse .grid .resource {
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
     padding: $spacing-m - 1px;
     margin-bottom: $spacing-l;
+    align-content: flex-start;
+    
+    .thumbnail {
+        width: 100%;
+        margin: 0 0 $spacing-m 0;
+    }
 }
 
-.browse .hentry img,
-#collection-items .hentry img {
-    max-width: 50%;
-    float: left;
-    margin: 0 $spacing-l $spacing-s 0;
+.browse .list .resource {
+    display: block;
+    overflow: hidden;
+    
+    .resource-meta:not(:only-child) {
+        width: 100%;
+    }
+    
+    .thumbnail {
+        width: 100%;
+        margin: 0 0 $spacing-m 0;
+        display: block;
+    }
 }
 
-.browse .hentry h2,
-#collection-items .hentry h2 {
+.browse .resource-list h4 {
     margin-top: 0;
 }
 

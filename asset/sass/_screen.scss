@@ -620,6 +620,7 @@ footer {
     
     .thumbnail {
         margin-left: gutter(8);
+        order: 2;
     }
 
     .resource {
@@ -630,6 +631,7 @@ footer {
 
     .resource-meta:not(:only-child) {
         width: 75%;
+        order: 1;
     }
     
     h4 {

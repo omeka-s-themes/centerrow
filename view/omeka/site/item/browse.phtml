@@ -74,13 +74,13 @@ $sortHeadings = [
     $body = $bodyTerm ? $item->value($bodyTerm) : $item->value('dcterms:date');
     ?>
     <li class="item resource">
+        <?php if ($thumbnail = $this->thumbnail($item, 'medium')): ?>
+        <?php echo $item->linkRaw($thumbnail, null, ['class' => 'thumbnail']); ?>
+        <?php endif; ?>
         <div class="resource-meta">
             <h4><?php echo $heading; ?></h4>
             <div class="date"><?php echo $body; ?></div>
         </div>
-        <?php if ($thumbnail = $this->thumbnail($item, 'medium')): ?>
-        <?php echo $item->linkRaw($thumbnail, null, ['class' => 'thumbnail']); ?>
-        <?php endif; ?>
     </li>
     <?php endforeach; ?>
 </ul>
