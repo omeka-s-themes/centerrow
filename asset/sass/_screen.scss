@@ -112,15 +112,23 @@ fieldset {
 }
 
 select {
-    appearance: normal;
-    -webkit-appearance: normal;
-    -moz-appearance: normal;
-    background-color: #fff;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
     border: 1px solid $gray;
     border-radius: 2px;
     font-size: $base-font-size;
     line-height: $base-line-height;
     color: #676767;
+    height: 1.5 * $spacing-l;
+    background: #fff url('../../../../application/asset/img/select-arrow.svg') no-repeat;
+    background-position: right (.25 * $spacing-l) center;
+    background-size: .3175 * $base-font-size;
+    padding-right: $spacing-l;
+    
+    option {
+      margin: 0 $spacing-m;
+    }
 }
 
 button,
@@ -130,6 +138,10 @@ input[type="submit"] {
     border: 0;
     cursor: pointer;
     padding: $spacing-s;
+    min-height: 1.5 * $spacing-l;
+    min-width: 1.5 * $spacing-l;
+    line-height: $base-line-height;
+    text-align: center;
 }
 
 a.button {
@@ -150,7 +162,7 @@ input[type="date"],
 input[type="datetime-local"] {
     border: 1px solid $gray;
     padding: $spacing-s - 1px;
-    height: 1.25 * $base-line-height;
+    height: 1.5 * $base-line-height;
 }
 
 textarea {
@@ -168,6 +180,7 @@ textarea {
     width: span(4 of 16);
     padding-right: gutter();
     text-align: right;
+    line-height: 1.5 * $base-line-height;
 }
 
 .required.field .field-meta:after {
@@ -205,30 +218,33 @@ form input[type="submit"] {
 }
 
 #advanced-search input[type="text"] {
-    height: 1.25 * $base-line-height;
+    height: 1.5 * $base-line-height;
 }
 
 #advanced-search input[type="submit"] {
-    font-size: 1.25 * $base-font-size;
-    padding: $spacing-s;
+    font-size: 1.5 * $base-font-size;
+    padding: $spacing-m;
+}
+
+#advanced-search .multi-value div.value:only-of-type .remove-value {
+    display: none;
 }
 
 #advanced-search .remove-value {
     text-indent: -9999px;
     position: relative;
-    width: 1.25 * $spacing-l;
-    height: 1.25 * $spacing-l;
+    width: 1.5 * $spacing-l;
+    height: 1.5 * $spacing-l;
     margin-left: $spacing-s;
 
     &:before {
-        content: "\f014";
         text-indent: 0;
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-        line-height: 1.25 * $base-line-height;
+        line-height: 1.5 * $base-line-height;
     }
 }
 
@@ -532,7 +548,6 @@ footer {
 
 .pagination {
     float: right;
-    margin-bottom: $spacing-l;
 }
 
 .pagination > * {
@@ -549,14 +564,14 @@ footer {
 .pagination .button {
     background-color: #fff;
     border: 1px solid $gray;
-    height: 1.25 * $spacing-l;
-    line-height: 1.25 * $spacing-l;
+    height: 1.55 * $spacing-l;
+    line-height: 1.5 * $spacing-l;
     padding: 0 $spacing-m;
     text-align: center;
 }
 
 .pagination .row-count {
-    line-height: 1.25 * $spacing-l;
+    line-height: 1.5 * $spacing-l;
 }
 
 [name="page"] {
