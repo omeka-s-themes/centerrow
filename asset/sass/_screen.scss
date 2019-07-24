@@ -619,19 +619,17 @@ footer {
     border-top: 1px solid $gray;
     
     .thumbnail {
-        margin-right: gutter(8);
+        margin-left: gutter(8);
     }
 
     .resource {
         display: flex;
-        justify-content: flex-end;
         border-bottom: 1px solid $gray;
         padding: $spacing-l 0;
     }
 
-    .resource-meta {
+    .resource-meta:not(:only-child) {
         width: 75%;
-
     }
     
     h4 {
