@@ -84,5 +84,7 @@ $sortHeadings = [
     </li>
     <?php endforeach; ?>
 </ul>
-<?php echo $this->pagination(); ?>
+<div class="browse-controls">
+    <?php echo $this->pagination(); ?>
+</div>
 <?php $this->trigger('view.browse.after'); ?>
