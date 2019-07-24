@@ -72,12 +72,29 @@ header nav .navigation {
 
 /* @group ----- Browse ----- */
 
+.browse-controls {
+    flex-direction: row;
+    
+    & > * {
+        margin: $spacing-s 0;
+    }
+    
+    .pagination {
+        order: 1;
+    }
+    
+    .sorting {
+        order: 2;
+    }
+}
+
 .browse .records {
     padding: $spacing-l 0;
 }
 
-.browse .grid {
+.browse .grid.resource-list {
     justify-content: flex-start;
+    margin: 0 (-1 * $spacing-m);
 }
 
 .browse .grid .resource {
