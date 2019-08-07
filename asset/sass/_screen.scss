@@ -540,6 +540,7 @@ footer {
     justify-content: space-between;
     flex-wrap: wrap;
     flex-direction: row-reverse;
+    width: 100%;
 }
 
 .sorting button {
@@ -599,7 +600,8 @@ footer {
 
 .resource-list {
     padding-left: 0;
-    list-style: none;  
+    list-style: none;
+    width: 100%;  
 }
 
 .resource-list.grid {
@@ -1030,6 +1032,19 @@ footer {
     border-bottom: 1px solid $gray;
     padding-bottom: $spacing-s - 1px;
     margin: 0 0 $spacing-s;
+}
+
+.page.browse .pagination {
+    margin-left: auto;
+}
+
+.page.browse .resource-list {
+    border-top: 1px solid $gray;
+    
+    li {
+      border-bottom: 1px solid $gray;
+      padding-bottom: $spacing-l;
+    }
 }
 
 .file,
