@@ -1,0 +1,55 @@
+<?php
+$this->headScript()->appendFile($this->assetUrl('js/browse.js'));
+$translate = $this->plugin('translate');
+$layoutSetting = $this->themeSetting('browse_layout');
+$gridState = ($layoutSetting == 'togglegrid') ? 'disabled' : '';
+$listState = ($layoutSetting == 'togglelist') ? 'disabled': '';
+$currentLayout = (!isset($layoutSetting) || strpos($layoutSetting, 'grid') !== false) ? 'grid' : 'list';
+?>
+<div class="preview-block">
+
+<?php if ($this->heading): ?>
+<h2><?php echo $this->heading; ?></h2>
+<?php endif; ?>
+
+<?php if (strpos($layoutSetting, 'toggle') !== false): ?>
+<div class="browse-controls">
+    <div class="layout-toggle">
+        <button type="button" aria-label="<?php echo $translate('Grid'); ?>" class="grid o-icon-grid" <?php echo $gridState; ?>></button>
+        <button type="button" aria-label="<?php echo $translate('List'); ?>" class="list o-icon-list" <?php echo $listState; ?>></button>        
+    </div>
+</div>
+<?php endif; ?>
+
+
+<ul class="resource-list preview <?php echo $currentLayout; ?>">
+<?php
+$headingTerm = $this->siteSetting('browse_heading_property_term');
+$bodyTerm = $this->siteSetting('browse_body_property_term');
+foreach ($this->resources as $resource):
+    $heading = $headingTerm ? $resource->value($headingTerm, ['default' => $translate('[Untitled]')]) : $resource->displayTitle();
+    $body = $bodyTerm ? $resource->value($bodyTerm) : $resource->displayDescription();
+?>
+    <li class="<?php echo $this->resourceType; ?> resource">
+        <?php if ($thumbnail = $this->thumbnail($resource, 'medium')): ?>
+        <?php echo $resource->linkRaw($thumbnail, null, ['class' => 'thumbnail']); ?>
+        <?php endif; ?>
+        <div class="resource-meta">
+            <h4><?php echo $resource->link($heading); ?></h4>
+            <?php if ($body): ?>
+            <div class="description"><?php echo $body; ?></div>
+            <?php endif; ?>
+        </div>
+    </li>
+<?php endforeach; ?>
+</ul>
+
+<?php
+if ($this->linkText):
+    echo $this->hyperlink($this->linkText, $this->url(
+        'site/resource', ['controller' => $this->resourceType, 'action' => 'browse'], ['query' => $this->query], true
+    ));
+endif;
+?>
+
+</div>

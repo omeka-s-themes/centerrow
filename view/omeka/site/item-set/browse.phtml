@@ -1,0 +1,53 @@
+<?php
+$translate = $this->plugin('translate');
+$escape = $this->plugin('escapeHtml');
+$this->headScript()->appendFile($this->assetUrl('js/browse.js'));
+
+$this->htmlElement('body')->appendAttribute('class', 'item-set resource browse');
+?>
+
+<?php echo $this->pageTitle($translate('Item sets'), 2); ?>
+
+<?php echo $this->searchFilters(); ?>
+
+<?php 
+    $layoutSetting = $this->themeSetting('browse_layout');
+    $gridState = ($layoutSetting == 'togglegrid') ? 'disabled' : '';
+    $listState = ($layoutSetting == 'togglelist') ? 'disabled': '';
+    $currentLayout = (!isset($layoutSetting) || strpos($layoutSetting, 'grid') !== false) ? 'grid' : 'list';
+?>
+<div class="browse-controls">
+    <?php echo $this->pagination(); ?>
+    <?php echo $this->hyperlink($translate('Advanced search'), $this->url(null, ['action' => 'search'], true), ['class' => 'advanced-search']); ?>
+    <?php if (strpos($layoutSetting, 'toggle') !== false): ?>
+    <div class="layout-toggle">
+        <button type="button" aria-label="<?php echo $translate('Grid'); ?>" class="grid o-icon-grid" <?php echo $gridState; ?>></button>
+        <button type="button" aria-label="<?php echo $translate('List'); ?>" class="list o-icon-list" <?php echo $listState; ?>></button>        
+    </div>
+    <?php endif; ?>
+</div>
+
+<?php $this->trigger('view.browse.before'); ?>
+<ul class="resource-list <?php echo $currentLayout; ?>">
+<?php
+$headingTerm = $this->siteSetting('browse_heading_property_term');
+$bodyTerm = $this->siteSetting('browse_body_property_term');
+foreach ($itemSets as $itemSet):
+    $heading = $headingTerm ? $itemSet->value($headingTerm, ['default' => $translate('[Untitled]')]) : $itemSet->displayTitle();
+    $body = $bodyTerm ? $itemSet->value($bodyTerm) : $itemSet->displayDescription();
+?>
+    <li class="item-set resource">
+        <?php if ($thumbnail = $this->thumbnail($itemSet, 'medium')): ?>
+        <?php echo $itemSet->linkRaw($thumbnail, null, ['class' => 'thumbnail']); ?>
+        <?php endif; ?>
+        <div class="resource-meta">
+            <h4><?php echo $itemSet->link($heading); ?></h4>
+            <?php if ($body): ?>
+            <div class="description"><?php echo $body; ?></div>
+            <?php endif; ?>
+        </div>
+    </li>
+<?php endforeach; ?>
+</ul>
+<?php $this->trigger('view.browse.after'); ?>
+<?php echo $this->pagination(); ?>
