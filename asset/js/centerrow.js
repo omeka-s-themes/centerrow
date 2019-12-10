@@ -11,7 +11,7 @@
         });
 
         if ($.isFunction($.fn.lightSlider)) {
-            $('#itemfiles').lightSlider({
+            $('#itemfiles, .item-with-metadata .lightgallery').lightSlider({
                 mode: 'fade',
                 autoWidth: true,
                 adaptiveHeight:false,
@@ -24,7 +24,7 @@
                 currentPagerPosition:'middle',
                 onSliderLoad: function(el) {
                     el.lightGallery({
-                        selector: '#itemfiles .media',
+                        selector: '#itemfiles .media, .item-with-metadata .lightgallery .media',
                         download: false,
                         zoom: true,
                         youtubePlayerParams: {

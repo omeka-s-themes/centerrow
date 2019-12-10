@@ -27,7 +27,7 @@ foreach ($item->media() as $media) {
 <ul id="itemfiles" class="media-list">
     <?php foreach ($lightMedia as $media): ?>
         <?php $source = ($media->originalUrl()) ? $media->originalUrl() : $media->source(); ?>
-        <li data-src="<?php echo $source; ?>" data-thumb="<?php echo $escape($media->thumbnailUrl('medium')); ?>" class="media resource">
+        <li data-src="<?php echo $source; ?>" data-thumb="<?php echo $escape($media->thumbnailUrl('medium')); ?>"  data-download-url="<?php echo $source; ?>" class="media resource">
             <?php echo $media->render(); ?>
         </li>
     <?php endforeach; ?>
