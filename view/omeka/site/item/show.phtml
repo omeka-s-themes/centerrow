@@ -13,7 +13,7 @@ $otherMedia = [];
 foreach ($item->media() as $media) {
     $mediaType = $media->mediaType();
     $mediaRenderer = $media->renderer();
-    if ((strpos($mediaType, 'image/') !== false) || (strpos($mediaRenderer, 'youtube') !== false)) {
+    if (in_array($mediaType, ['image/jpeg', 'image/png', 'image/gif']) || (strpos($mediaRenderer, 'youtube') !== false)) {
         $lightMedia[] = $media;
     } else {
         $otherMedia[] = $media;
@@ -46,8 +46,8 @@ foreach ($item->media() as $media) {
         <div class="value">
             <a href="<?php echo $media->siteUrl(); ?>"><?php echo $media->displayTitle(); ?></a>
         </div>
+        <?php endforeach; ?>
     </div>
-    <?php endforeach; ?>
 </div>
 <?php endif; ?>
 
