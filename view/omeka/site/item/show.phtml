@@ -10,10 +10,11 @@ $this->headScript()->appendFile($this->assetUrl('js/lg-zoom.js'));
 
 $lightMedia = [];
 $otherMedia = [];
+$whitelist = ['image/bmp', 'image/gif', 'image/jpeg', 'image/png', 'image/svg+xml'];
 foreach ($item->media() as $media) {
     $mediaType = $media->mediaType();
     $mediaRenderer = $media->renderer();
-    if (in_array($mediaType, ['image/jpeg', 'image/png', 'image/gif']) || (strpos($mediaRenderer, 'youtube') !== false)) {
+    if (in_array($mediaType, $whitelist) || (strpos($mediaRenderer, 'youtube') !== false)) {
         $lightMedia[] = $media;
     } else {
         $otherMedia[] = $media;
