@@ -1046,15 +1046,80 @@ footer {
 
 /* @group ----- Search ----- */
 
-.index.search .results ul {
+.results {
+  margin-bottom: 2 * $spacing-l;
+  clear: both;
+}
+
+.results ul {
   list-style: none;
-  padding-left: 0;
-  columns: 2;
+  padding-left: 0;  
+}
+
+.results .result-title {
+  font-weight: bold;
+  display: block;
+}
+
+.results .result-site,
+.results ul ul {
+  padding-left: $spacing-m;
+}
+
+.results > ul {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.results > ul > li {
+  margin-bottom: $spacing-l;
+  width: calc(50% - #{$spacing-l});
   
-  li {
-    margin-bottom: $spacing-s;
-    padding-bottom: $spacing-s;
-    border-bottom: 1px solid $gray;
+  &:nth-child(2n) {
+    margin-left: $spacing-l;
+  }
+ }
+ 
+.results .tablesaw {
+  margin: (-1 * $spacing-m) 0 $spacing-l;
+}
+
+.pagination + .results {
+  margin: $spacing-l 0 0;
+  clear: both;
+}
+
+.sitewide-search-form ~ .results + .pagination {
+  margin-top: 0;
+}
+
+.sitewide-search-form ~ .advanced-search {
+  display: block;
+}
+
+.sitewide-search-form ~ h2 {
+  width: 50%;
+  float: left;
+}
+
+.sitewide-search-form ~ .pagination {
+  margin: (1.25 * $spacing-l) 0 $spacing-l;
+  text-align: right;
+  width: 50%;
+}
+
+.index.search .results ul li {
+  margin-bottom: $spacing-s;
+  padding-bottom: $spacing-s;
+  border-bottom: 1px solid $gray;
+}
+
+.sitewide-search-form {
+  display: flex;
+  
+  input[type="submit"] {
+    margin: 0;
   }
 }
 
