@@ -1109,6 +1109,10 @@ footer {
   width: 50%;
 }
 
+.sitewide-search-form ~ p {
+  clear: both;
+}
+
 .index.search .results ul li {
   margin-bottom: $spacing-s;
   padding-bottom: $spacing-s;
