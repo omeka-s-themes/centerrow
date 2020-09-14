@@ -292,6 +292,23 @@ nav ul {
     color: #676767;
 }
 
+#skipnav {
+  position: fixed;
+  top: $spacing-l;
+  left: 50%;
+  border: 1px solid $gray;
+  transform: translateX(-50%);
+  z-index: -5;
+  padding: $spacing-s;
+  background-color: #fff;
+  opacity: 0;
+  
+  &:focus {
+    z-index: 1000;
+    opacity: 1;
+  }
+}
+
 /* @end */
 
 /* @group ----- Header ----- */
