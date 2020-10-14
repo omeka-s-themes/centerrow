@@ -16,13 +16,13 @@ $currentLayout = (!isset($layoutSetting) || strpos($layoutSetting, 'grid') !== f
 <div class="browse-controls">
     <div class="layout-toggle">
         <button type="button" aria-label="<?php echo $translate('Grid'); ?>" class="grid o-icon-grid" <?php echo $gridState; ?>></button>
-        <button type="button" aria-label="<?php echo $translate('List'); ?>" class="list o-icon-list" <?php echo $listState; ?>></button>        
+        <button type="button" aria-label="<?php echo $translate('List'); ?>" class="list o-icon-list" <?php echo $listState; ?>></button>
     </div>
 </div>
 <?php endif; ?>
 
 
-<ul class="resource-list preview <?php echo $currentLayout; ?>">
+<ul class="resource-list preview grid">
 <?php
 $headingTerm = $this->siteSetting('browse_heading_property_term');
 $bodyTerm = $this->siteSetting('browse_body_property_term');
@@ -31,12 +31,16 @@ foreach ($this->resources as $resource):
     $body = $bodyTerm ? $resource->value($bodyTerm) : $resource->displayDescription();
 ?>
     <li class="<?php echo $this->resourceType; ?> resource">
-        <?php if ($thumbnail = $this->thumbnail($resource, 'medium')): ?>
-        <?php echo $resource->linkRaw($thumbnail, null, ['class' => 'thumbnail']); ?>
-        <?php endif; ?>
+        <?php
+        if (in_array('thumbnail', $this->components)):
+            echo $resource->linkRaw($this->thumbnail($resource, 'medium', ['title' => $heading]));
+        endif;?>
         <div class="resource-meta">
-            <h4><?php echo $resource->link($heading); ?></h4>
-            <?php if ($body): ?>
+            <h4><?php
+            if (in_array('resource-heading', $this->components)):
+                echo $resource->link($heading);
+            endif;?></h4>
+            <?php if (in_array('resource-body', $this->components) && $body): ?>
             <div class="description"><?php echo $body; ?></div>
             <?php endif; ?>
         </div>
