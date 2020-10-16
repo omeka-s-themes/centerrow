@@ -22,7 +22,7 @@ $currentLayout = (!isset($layoutSetting) || strpos($layoutSetting, 'grid') !== f
 <?php endif; ?>
 
 
-<ul class="resource-list preview grid">
+<ul class="resource-list preview <?php echo $currentLayout; ?>">
 <?php
 $headingTerm = $this->siteSetting('browse_heading_property_term');
 $bodyTerm = $this->siteSetting('browse_body_property_term');
