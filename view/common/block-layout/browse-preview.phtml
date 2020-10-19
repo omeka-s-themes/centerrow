@@ -33,7 +33,7 @@ foreach ($this->resources as $resource):
     <li class="<?php echo $this->resourceType; ?> resource">
         <?php
         if (in_array('thumbnail', $this->components)):
-            echo $resource->linkRaw($this->thumbnail($resource, 'medium', ['title' => $heading]));
+            echo $resource->linkRaw($this->thumbnail($resource, 'medium', ['class' => 'thumbnail']));
         endif;?>
         <div class="resource-meta">
             <h4><?php
