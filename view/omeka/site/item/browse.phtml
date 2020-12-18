@@ -79,7 +79,7 @@ $sortHeadings = [
         <?php endif; ?>
         <div class="resource-meta">
             <h4><?php echo $item->linkRaw($heading); ?></h4>
-            <div class="date"><?php echo $body; ?></div>
+            <div class="date"><?php echo $escape($body); ?></div>
         </div>
     </li>
     <?php endforeach; ?>

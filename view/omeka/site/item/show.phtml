@@ -3,6 +3,7 @@ $escape = $this->plugin('escapeHtml');
 $this->htmlElement('body')->appendAttribute('class', 'item resource show');
 $this->headLink()->appendStylesheet($this->assetUrl('css/lightslider.min.css'));
 $this->headLink()->appendStylesheet($this->assetUrl('css/lightgallery.min.css'));
+$this->headScript()->appendFile($this->assetUrl('js/show.js'));
 $this->headScript()->appendFile($this->assetUrl('js/lightslider.min.js'));
 $this->headScript()->appendFile($this->assetUrl('js/lightgallery.min.js'));
 $this->headScript()->appendFile($this->assetUrl('js/lg-video.min.js'));
