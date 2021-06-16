@@ -62,6 +62,7 @@ $sortHeadings = [
     </div>
     <?php endif; ?>
 </div>
+<?php $this->trigger('view.browse.before'); ?>
 <ul class="resource-list <?php echo $currentLayout; ?>">
     <?php
     $headingTerm = $this->siteSetting('browse_heading_property_term');
