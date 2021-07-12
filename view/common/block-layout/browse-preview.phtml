@@ -41,18 +41,6 @@ $body = $bodyTerm ? $resource->value($bodyTerm) : $resource->displayDescription(
     <li class="<?php echo $this->resourceType; ?> resource">
         <?php
         if ($showThumbnail):
-<<<<<<< HEAD
-            echo $resource->linkRaw($this->thumbnail($resource, 'medium', ['class' => 'thumbnail']));
-        endif;?>
-        <div class="resource-meta">
-            <?php
-            if ($showHeading):
-                echo '<h4>' . $resource->link($heading) . '</h4>';
-            endif; ?>
-            <?php if ($showBody && $body): ?>
-            <div class="description"><?php echo $body; ?></div>
-            <?php endif; ?>
-=======
             echo $resource->linkRaw($this->thumbnail($resource, 'medium', ['title' => $heading]), null, ['class' => 'thumbnail']);
         endif;?>
         <?php if ($showHeading || $showBody): ?>
@@ -64,7 +52,6 @@ $body = $bodyTerm ? $resource->value($bodyTerm) : $resource->displayDescription(
         <?php if ($showBody && $body): ?>
         <div class="description"><?php echo $escape($body); ?></div>
         <?php endif; ?>
->>>>>>> 185c92c (Update browse preview to be consistent with regular browse. #36)
         </div>
         <?php endif; ?>
     </li>
