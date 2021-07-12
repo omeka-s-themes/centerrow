@@ -30,8 +30,5 @@
   "browserslist": [
     "> 5%",
     "> 1% in US"
-  ],
-  "dependencies": {
-    "node-sass": "^4.14.1"
-  }
+  ]
 }
