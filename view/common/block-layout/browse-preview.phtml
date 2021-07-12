@@ -7,7 +7,7 @@ $gridState = ($layoutSetting == 'togglegrid') ? 'disabled' : '';
 $listState = ($layoutSetting == 'togglelist') ? 'disabled': '';
 $currentLayout = (!isset($layoutSetting) || strpos($layoutSetting, 'grid') !== false) ? 'grid' : 'list';
 ?>
-<div class="preview-block">
+<div class="preview-block browse">
 
 <?php if ($this->heading): ?>
 <h2><?php echo $this->heading; ?></h2>
@@ -30,13 +30,18 @@ $showHeading = in_array('resource-heading', $this->components);
 $showBody = in_array('resource-body', $this->components);
 $headingTerm = $this->siteSetting('browse_heading_property_term');
 $bodyTerm = $this->siteSetting('browse_body_property_term');
+
+$filterLocale = (bool) $this->siteSetting('filter_locale_values');
+$lang = $this->lang();
+
 foreach ($this->resources as $resource):
-    $heading = $headingTerm ? $resource->value($headingTerm, ['default' => $translate('[Untitled]')]) : $resource->displayTitle();
-    $body = $bodyTerm ? $resource->value($bodyTerm) : $resource->displayDescription();
+$heading = $headingTerm ? $resource->value($headingTerm, ['default' => $translate('[Untitled]')]) : $resource->displayTitle(null, ($filterLocale ? $lang : null));
+$body = $bodyTerm ? $resource->value($bodyTerm) : $resource->displayDescription(null, ($filterLocale ? $lang : null));
 ?>
     <li class="<?php echo $this->resourceType; ?> resource">
         <?php
         if ($showThumbnail):
+<<<<<<< HEAD
             echo $resource->linkRaw($this->thumbnail($resource, 'medium', ['class' => 'thumbnail']));
         endif;?>
         <div class="resource-meta">
@@ -47,7 +52,21 @@ foreach ($this->resources as $resource):
             <?php if ($showBody && $body): ?>
             <div class="description"><?php echo $body; ?></div>
             <?php endif; ?>
+=======
+            echo $resource->linkRaw($this->thumbnail($resource, 'medium', ['title' => $heading]), null, ['class' => 'thumbnail']);
+        endif;?>
+        <?php if ($showHeading || $showBody): ?>
+        <div class="resource-meta">
+        <?php
+        if ($showHeading):
+            echo '<h4>' . $resource->link($heading) . '</h4>';
+        endif;?>
+        <?php if ($showBody && $body): ?>
+        <div class="description"><?php echo $escape($body); ?></div>
+        <?php endif; ?>
+>>>>>>> 185c92c (Update browse preview to be consistent with regular browse. #36)
         </div>
+        <?php endif; ?>
     </li>
 <?php endforeach; ?>
 </ul>
