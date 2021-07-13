@@ -197,3 +197,17 @@ footer {
 }
 
 /* @end */
+
+/* @group ----- Pages ----- */
+
+.page #content .sub-menu, 
+.page #content .sub-menu ~ *:not(.site-page-pagination) {
+    position: static;
+    width: 100%;
+    padding: 0;
+}
+
+#content .blocks h2:first-child {
+    margin-top: 0
+}
+/* @end */

@@ -998,15 +998,11 @@ footer {
     padding-top: $spacing-m - 1px;
     margin-top: 2 * $spacing-l;
     width: 100%;
+    clear: both;
 
     a:last-child:not(:only-child) {
         margin-left: $spacing-l;
     }
-}
-
-.page #content {
-    display: flex;
-    flex-wrap: wrap;
 }
 
 .page #content .breadcrumbs {
@@ -1019,12 +1015,18 @@ footer {
 }
 
 .page #content .sub-menu {
-    padding: 0 gutter() $spacing-l 0;
-    width: span(2 of 16);
+    padding: 0 $spacing-l $spacing-l 0;
+    width: span(3 of 16);
+    float: left;
+    position: sticky;
+    top: $spacing-l;
+    left: 0;
 }
 
 .page #content .sub-menu ~ *:not(.site-page-pagination) {
-    width: span(14 of 16);
+    width: span(13 of 16);
+    float: right;
+    clear: none;
 }
 
 .page #content .sub-menu > ul {
@@ -1033,20 +1035,25 @@ footer {
 
 .page #content .sub-menu a {
     font-size: .875 * $base-font-size;
-    color: #676767;
+    display: inline-block;
+    padding-left: $spacing-l;
+    text-indent: -1 * $spacing-l;
+
+    &:before {
+        content: "\25C6";
+        width: $spacing-m;
+        display: inline-block;
+        margin-right: $spacing-m;
+        text-indent: 0;
+    }
 }
 
 .page #content .sub-menu .current a {
-    color: $red;
+    font-weight: bold;
 }
 
 .page #content .sub-menu > ul > li {
     padding: $spacing-s - 1px;
-}
-
-.page #content .sub-menu > ul > li:not(:last-of-type) {
-    border-bottom: 1px solid $gray;
-    margin-bottom: $spacing-s;
 }
 
 .page #content .sub-menu h4 {
