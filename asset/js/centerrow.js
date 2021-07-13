@@ -10,6 +10,6 @@
             }
         });
 
-        $('header nav ul.navigation').addClass('sf-menu').superfish();
+        $('header nav ul.navigation').superfish().supposition();
     });
 })(jQuery)
