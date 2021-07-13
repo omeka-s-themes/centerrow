@@ -4,6 +4,11 @@
 
 @media screen {
     @import "screen";
+    @import "superfish-arrows";
+}
+
+@media screen and (min-width: 640px) {
+    @import "superfish";
 }
 
 @media screen and (max-width:640px) {

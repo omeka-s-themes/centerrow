@@ -9,5 +9,7 @@
                 $('#query').focus();
             }
         });
+
+        $('header nav ul.navigation').addClass('sf-menu').superfish();
     });
 })(jQuery)

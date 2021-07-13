@@ -26,6 +26,34 @@ footer {
 
 /* group ----- Navigation ----- */
 
+header nav ul.navigation {
+    display: block;
+    padding: 0;
+
+    li {
+        width: 100%;
+        margin: 0;
+    }
+
+    li:not(:last-child) {
+        border-bottom: 1px solid $gray;
+    }
+
+    li a {
+        padding: $spacing-s;
+        display: block;
+        position: relative;
+    }
+
+    li ul {
+        margin-left: $spacing-l;
+    }
+
+    li ul ul {
+        margin-left: 2 * $spacing-l;
+    }
+}
+
 .pagination-nav,
 #sort-links {
     width: 100%;
