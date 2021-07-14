@@ -256,6 +256,10 @@ form input[type="submit"] {
 
 /* @group ----- Navigation ----- */
 
+.mobile-only {
+    display: none;
+}
+
 nav .navigation,
 nav ul {
     @include de-list;

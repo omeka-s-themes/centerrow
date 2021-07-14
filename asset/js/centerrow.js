@@ -10,6 +10,10 @@
             }
         });
 
+        $('.mobile-toggle').click(function() {
+            $('header ul.navigation').toggleClass('open');
+        });
+
         $('header nav ul.navigation').superfish().supposition();
     });
 })(jQuery)

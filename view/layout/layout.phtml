@@ -47,6 +47,9 @@ $userBar = $this->userBar();
                     <button type="button" class="search-toggle" title="Toggle search"></button>
                 </div>
                 <nav>
+                <div class="mobile-only">
+                    <button type="button" class="mobile-toggle"><?php echo $this->translate('Menu'); ?></button>
+                </div>
                 <?php
                 echo $site->publicNav()->menu()->renderMenu(null, [
                     'maxDepth' => $this->themeSetting('nav_depth') - 1,
