@@ -26,6 +26,64 @@ footer {
 
 /* group ----- Navigation ----- */
 
+.mobile-only {
+    display: block;
+}
+
+.mobile-toggle {
+    background-color: #fff;
+    border-bottom: 1px solid $gray;
+    color: $red;
+    margin-right: 0;
+    justify-content: space-between;
+    display: flex;
+    width: 100%;
+}
+
+.mobile-toggle:after {
+    display: inline-block;
+    content: "\f0c9";
+    font-family: "Font Awesome 5 Free";
+}
+
+header nav {
+    padding-bottom: $spacing-l;
+}
+
+header nav ul.navigation {
+    display: block;
+    padding: 0;
+    border-top: 0;
+    margin: 0;
+
+    &:not(.open) {
+        display: none;
+    }
+
+    li {
+        width: 100%;
+        margin: 0;
+    }
+
+    li:not(:last-child) {
+        border-bottom: 1px solid $gray;
+    }
+
+    li a {
+        padding: $spacing-s;
+        display: block;
+        position: relative;
+    }
+
+    li ul {
+        margin-left: $spacing-l;
+    }
+
+    li ul ul {
+        margin-left: 2 * $spacing-l;
+    }
+}
+
 .pagination-nav,
 #sort-links {
     width: 100%;
@@ -49,8 +107,9 @@ footer {
 
 header > h1,
 .site-title {
-    margin: $spacing-s 0;
+    margin: (2 * $spacing-l) 0 $spacing-s;
     line-height: 1.5 * $base-line-height;
+    font-size: 1.25 * $base-font-size;
 }
 
 .site-title img {
@@ -59,7 +118,31 @@ header > h1,
 }
 
 #search-container {
-    top: -(.25 * $spacing-l);
+    top: -(2.25 * $spacing-l);
+    right: 0;
+    left: 0;
+}
+
+#search-form.open,
+#search-form.closed {
+    display: flex;
+    position: relative;
+    right: auto;
+    width: auto;
+    box-shadow: none;
+
+    input[type="text"],
+    [type="submit"] {
+        display: block;
+    }
+
+    input[type="text"] {
+        width: 100%;
+    }
+
+    & + .search-toggle {
+        display: none;
+    }
 }
 
 #top-nav ul {
