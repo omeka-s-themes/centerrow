@@ -209,8 +209,8 @@ form input[type="submit"] {
     margin-top: $spacing-m;
 }
 
-#advanced-search select {
-    margin-bottom: $spacing-m;
+#advanced-search .value:not(:first-child) {
+    margin-top: $spacing-s;
 }
 
 #advanced-search {
