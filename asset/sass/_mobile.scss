@@ -279,6 +279,15 @@ footer {
   columns: 1;
 }
 
+.field .inputs {
+    padding-left: 0;
+}
+
+.field .inputs ~ *, 
+form input[type="submit"] {
+    margin-left: 0;
+}
+
 /* @end */
 
 /* @group ----- Pages ----- */
