@@ -261,10 +261,6 @@ form input[type="submit"] {
 
 /* @group ----- Navigation ----- */
 
-.mobile-only {
-    display: none;
-}
-
 nav .navigation,
 nav ul {
     @include de-list;
@@ -326,6 +322,7 @@ nav ul {
     position: absolute;
     top: 0;
     left: -9999px;
+    background-color: #fff;
     padding: $spacing-s;
     display: inline-block;
 
@@ -339,12 +336,11 @@ header nav .navigation {
     list-style-type: none;
     padding: 0;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     border-top: 1px solid $gray;
     border-bottom: 1px solid $gray;
     padding: ($spacing-s - 1px) 0;
     margin: $spacing-l 0;
-    float: none;
 }
 
 header nav li {
