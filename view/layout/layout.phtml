@@ -10,6 +10,7 @@ $this->headLink()->prependStylesheet('//fonts.googleapis.com/css?family=Crimson+
 $this->headLink()->prependStylesheet($this->assetUrl('css/iconfonts.css', 'Omeka'));
 $this->headLink()->appendStylesheet($this->assetUrl('css/style.css'));
 $this->headScript()->prependFile($this->assetUrl('js/centerrow.js'));
+$this->headScript()->prependFile($this->assetUrl('js/jquery-accessibleMegaMenu.js'));
 $this->headScript()->prependFile($this->assetUrl('js/global.js', 'Omeka'));
 $this->headScript()->prependFile($this->assetUrl('vendor/jquery/jquery.min.js', 'Omeka'));
 $this->trigger('view.layout');
@@ -64,5 +65,11 @@ $userBar = $this->userBar();
                 <?php endif; ?>
             </footer>
         </div>
+        <script type="text/javascript">
+        jQuery(document).ready(function () {
+            CenterRow.mobileMenu();
+            CenterRow.megaMenu();
+        });
+        </script>
     </body>
 </html>
