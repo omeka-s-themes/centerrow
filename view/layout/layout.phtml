@@ -44,13 +44,7 @@ $userBar = $this->userBar();
                     <?php echo $this->partial('common/search-form'); ?>
                     <button type="button" class="search-toggle" title="Toggle search"></button>
                 </div>
-                <nav>
-                <?php
-                echo $site->publicNav()->menu()->renderMenu(null, [
-                    'maxDepth' => $this->themeSetting('nav_depth') - 1
-                ]);
-                ?>
-                </nav>
+                <?php echo $site->publicNav()->menu()->setPartial('common/accessible-mega-menu.phtml')->renderPartial(); ?>
             </header>
 
             <div id="content" role="main">

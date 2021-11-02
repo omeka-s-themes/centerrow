@@ -339,7 +339,7 @@ header nav .navigation {
     justify-content: space-between;
     border-top: 1px solid $gray;
     border-bottom: 1px solid $gray;
-    padding: ($spacing-s - 1px) 0;
+    padding: 0;
     margin: $spacing-l 0;
 }
 
@@ -529,6 +529,7 @@ header nav ul {
     display: inline-block;
     padding: 0;
     margin: 0;
+    height: 100%;
 }
 
 /* first descendant link within a top level navigation item */
@@ -542,37 +543,38 @@ header nav ul {
 
 /* focus/open states of first descendant link within a top level 
     navigation item */
-.nav-item > a:focus,
-.nav-item > a.open {
-    border: 1px solid #dedede;
+.open {
+    border-bottom: 3px solid $gray;
+}
+
+.nav-item.open > a {
+    padding: $spacing-s $spacing-m ($spacing-s - 3px);
 }
 
 /* open state of first descendant link within a top level 
     navigation item */
 .nav-item > a.open {
     background-color: #fff;
-    border-bottom: none;
+    border-bottom: 0;
     z-index: 1;
+    margin-bottom: 0;
+    text-decoration: underline;
 }
 
 header nav > ul > li > .sub-nav-toggle {
     margin-left: -$spacing-m;
+    position: relative;
+    z-index: 1;
 }
 
-.sub-nav-toggle {
-    padding: 0 $spacing-s;
-    background-color: transparent;
-    min-width: 0;
-    min-height: 0;
-    font-size: .875 * $base-font-size;
-
-    &:before {
-        content: "\f0da";
-        font-family: "Font Awesome 5 Free";
-    }
+.nav-menu > .nav-item > [role="button"]:after {
+    content: "\f0da";
+    font-family: "Font Awesome 5 Free";
+    display: inline-block;
+    margin-left: $spacing-s;
 }
 
-.open > .sub-nav-toggle:before {
+.nav-menu > .nav-item > [aria-expanded="true"]:after {
     content: "\f0d7";
 }
 
@@ -580,7 +582,7 @@ header nav > ul > li > .sub-nav-toggle {
 .sub-nav {
     position: absolute;
     display: none;
-    top: 2 * $spacing-l;
+    top: calc(100% + 1px);
     margin-top: -1px;
     border: 1px solid #dedede;
     border-width: 1px 0;
@@ -588,24 +590,26 @@ header nav > ul > li > .sub-nav-toggle {
 }
 
 /* sub-navigation panel open state */
-.open > .sub-nav {
+.open.sub-nav,
+.open.sub-nav ul {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     left: 0;
     right: 0;
 }
 
 /* list of items within sub-navigation panel */
 .sub-nav ul {
-    vertical-align: top;
-    margin: 0 1em 0 0;
+    margin: 0 1em ;
     padding: 0;
     display: block;
 }
 
-.sub-nav .sub-nav {
+.open.sub-nav .sub-nav {
     position: static;
     border: 0;
+    display: block;
 
     li {
         padding: $spacing-s 0;
@@ -627,7 +631,7 @@ header nav > ul > li > .sub-nav-toggle {
     display: block;
     list-style-type: none;
     margin: 0;
-    padding: $spacing-l;
+    padding: $spacing-m;
     position: relative;
 }    
 

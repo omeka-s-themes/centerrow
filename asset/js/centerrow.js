@@ -33,7 +33,9 @@ if (!CenterRow) {
             focusClass: "focus",
 
             /* css class for the open state */
-            openClass: "open"
+            openClass: "open",
+
+            openOnMouseover: true,
         };
 
         $.extend(menuOptions, customMenuOptions);
@@ -42,16 +44,6 @@ if (!CenterRow) {
     };
 
     CenterRow.mobileMenu = function() {
-        $('header nav li ul').each(function() {
-            var childMenu = $(this);
-            var subnavToggle = $('<button type="button" class="sub-nav-toggle" aria-label="Show subnavigation"></button>');
-            subnavToggle.click(function() {
-                $(this).parent('.parent').toggleClass('open');
-            });
-            childMenu.parent().addClass('parent');
-            childMenu.addClass('sub-nav').before(subnavToggle);
-        });
-
         $('.menu-button').click( function(e) {
             e.preventDefault();
             $('header nav > ul').toggleClass('open');
