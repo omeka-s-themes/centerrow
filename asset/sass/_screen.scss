@@ -535,7 +535,7 @@ header nav ul {
 /* first descendant link within a top level navigation item */
 .nav-item > a {
     position: relative;
-    display: inline-block;
+    display: inline-flex;
     padding: $spacing-s $spacing-m;
     margin: 0 0 -1px 0;
     border: 1px solid transparent;
@@ -568,14 +568,13 @@ header nav > ul > li > .sub-nav-toggle {
 }
 
 .nav-menu > .nav-item > [role="button"]:after {
-    content: "\f0da";
+    content: "\00A0\00A0\f0da";
     font-family: "Font Awesome 5 Free";
     display: inline-block;
-    margin-left: $spacing-s;
 }
 
 .nav-menu > .nav-item > [aria-expanded="true"]:after {
-    content: "\f0d7";
+    content: "\00A0\00A0\f0d7";
 }
 
 /* sub-navigation panel */

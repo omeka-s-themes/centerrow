@@ -68,6 +68,7 @@ header > h1,
 
 header nav .navigation {
     justify-content: center;
+    flex-wrap: wrap;
     margin: $spacing-m 0;
 }
 
