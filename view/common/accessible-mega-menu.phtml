@@ -9,7 +9,7 @@ $container = $this->container;
         <?php $hasChildren = $page->hasPages() ?>
         <?php $navDepth = $this->themeSetting('nav_depth'); ?>
         <li class="<?php if ($page->isActive()) echo 'active' ?>">
-            <a href="<?php echo $page->getHref(); ?>"><?php echo $this->escapeHtml($this->translate($page->getLabel(), $this->navigation($container)->getTranslatorTextDomain())); ?></a>
+            <a href="<?php echo ($hasChildren) ? '#' : $page->getHref(); ?>"><?php echo $this->escapeHtml($this->translate($page->getLabel(), $this->navigation($container)->getTranslatorTextDomain())); ?></a>
             <?php 
             if ($hasChildren) {
                 $access = false;
@@ -18,7 +18,10 @@ $container = $this->container;
                         $access = true;
                     }
                 }
+                echo '<div class="sub-nav first"><ul><li class="sub-nav-group">';
+                echo '<a href="' . $page->getHref() . '" class="parent">' . $this->escapeHtml($this->translate($page->getLabel(), $this->navigation($container)->getTranslatorTextDomain())) . '</a>';
                 echo ($access) ? $this->partial('common/sub-navigation', ['container'=> $container, 'children' => $page->getPages(), 'level' => 1]) : '';
+                echo '</li></ul></div>';
             }
             ?>
         </li>

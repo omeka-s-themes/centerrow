@@ -72,6 +72,11 @@ header nav .navigation {
     margin: $spacing-m 0;
 }
 
+.sub-nav.first {
+    max-width: 100%;
+    margin: 0 $spacing-l;
+}
+
 #content > h2 {
     margin: $spacing-m 0;
 }
