@@ -374,9 +374,16 @@ header a {
     max-width: 100%;
 }
 
-#header-image img {
-    max-width: 100%;
-    vertical-align: top;
+.banner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    @include container;
+}
+
+.banner img {
+    width: 100%;
 }
 
 #search-container {

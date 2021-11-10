@@ -13,6 +13,10 @@ $this->headScript()->prependFile($this->assetUrl('js/centerrow.js'));
 $this->headScript()->prependFile($this->assetUrl('js/jquery-accessibleMegaMenu.js'));
 $this->headScript()->prependFile($this->assetUrl('js/global.js', 'Omeka'));
 $this->headScript()->prependFile($this->assetUrl('vendor/jquery/jquery.min.js', 'Omeka'));
+$banner = $this->themeSettingAssetUrl('banner');
+$bannerHeight = $this->themeSetting('banner_height');
+$bannerHeightMobile = $this->themeSetting('banner_height_mobile');
+$bannerPosition = ($this->themeSetting('banner_position')) ? str_replace('_','-', $this->themeSetting('banner_position')) : 'center';
 $this->trigger('view.layout');
 $userBar = $this->userBar();
 ?>
@@ -24,6 +28,19 @@ $userBar = $this->userBar();
         <?php echo $this->headLink(); ?>
         <?php echo $this->headStyle(); ?>
         <?php echo $this->headScript(); ?>
+        <style>
+            .banner {
+                height: <?php echo ($bannerHeight !== '') ? $bannerHeight: 'auto'  ?>;
+                align-items: <?php echo $bannerPosition; ?>;
+            }
+        <?php if ($bannerHeightMobile !== ''): ?>
+            @media screen and (max-width:640px) {
+                .banner {
+                    height: <?php echo $bannerHeightMobile; ?>;
+                }
+            }
+        <?php endif; ?>
+        </style>
     </head>
 
     <?php echo $this->htmlElement('body'); ?>
@@ -45,6 +62,12 @@ $userBar = $this->userBar();
                     <button type="button" class="search-toggle" title="Toggle search"></button>
                 </div>
                 <?php echo $site->publicNav()->menu()->setPartial('common/accessible-mega-menu.phtml')->renderPartial(); ?>
+
+                <?php if ($banner): ?>
+                <div class="banner">
+                    <img src="<?php echo $this->themeSettingAssetUrl('banner'); ?>" title="Banner">
+                </div>
+                <?php endif; ?>
             </header>
 
             <div id="content" role="main">
