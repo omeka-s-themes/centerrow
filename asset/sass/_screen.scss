@@ -333,6 +333,7 @@ nav ul {
 }
 
 header nav .navigation {
+    position: relative;
     list-style-type: none;
     padding: 0;
     display: flex;
@@ -595,14 +596,14 @@ a.parent:after {
 
 /* sub-navigation panel */
 .sub-nav {
-    position: fixed;
+    position: absolute;
     display: none;
     border: 1px solid #dedede;
     border-width: 1px 0;
     background-color: #fff;
     
     &.first {
-        max-width: calc(100% - 1.25%);
+        max-width: 100%;
         margin: 0 auto;
         padding: 0 $spacing-m;
     }
@@ -628,6 +629,7 @@ a.parent:after {
 .open.sub-nav ul {
     display: flex;
     flex-wrap: wrap;
+    top: 100%;
     left: 0;
     right: 0;
     z-index: 999;
