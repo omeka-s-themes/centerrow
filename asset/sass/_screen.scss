@@ -441,6 +441,7 @@ header a {
     &:after {
         content: "\f002";
         font-family: "Font Awesome 5 Free";
+        font-weight: 900;
     }
 }
 
@@ -451,6 +452,7 @@ header a {
     &:after {
         content: "\f00d";
         font-family: "Font Awesome 5 Free";
+        font-weight: 900;
     }
 }
 
@@ -469,6 +471,7 @@ header a {
     &:after {
         content: "\f002";
         font-family: "Font Awesome 5 Free";
+        font-weight: 900;
         position: absolute;
         top: $spacing-s;
         right: 0;
@@ -578,8 +581,10 @@ header nav > ul > li > .sub-nav-toggle {
 .nav-menu > .nav-item > [role="button"]:after {
     content: "\00A0\00A0\f0da";
     font-family: "Font Awesome 5 Free";
+    font-weight: 900;
     display: inline-block;
     line-height: 1.5;
+    font-weight: 900;
 }
 
 .nav-menu > .nav-item > [aria-expanded="true"]:after {
@@ -784,11 +789,13 @@ footer {
 .o-icon-grid:before {
     font-family: "Font Awesome 5 Free";
     content: "\f009";
+    font-weight: 900;
 }
 
 .o-icon-list:before {
     font-family: "Font Awesome 5 Free";
     content: "\f03a";
+    font-weight: 900;
 }
 
 .resource-list {
