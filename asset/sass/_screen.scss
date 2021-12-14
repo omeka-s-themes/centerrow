@@ -53,7 +53,7 @@ p {
 #wrap {
     max-width: 1100px;
     margin: auto;
-    padding: 0 gutter();
+    padding: 0 $spacing-l;
     position: relative;
 }
 
@@ -178,8 +178,8 @@ textarea {
 }
 
 .field .field-meta {
-    width: span(4 of 16);
-    padding-right: gutter();
+    width: 25%;
+    padding-right: $spacing-l;
     text-align: right;
     line-height: 1.5 * $base-line-height;
 }
@@ -197,8 +197,8 @@ textarea {
 }
 
 .field .inputs {
-    width: span(12 of 16);
-    padding-left: gutter();
+    width: 75%;
+    padding-left: $spacing-l;
 }
 
 .field .collapsible {
@@ -210,7 +210,7 @@ textarea {
 
 .field .inputs ~ *,
 form input[type="submit"] {
-    margin-left: calc(#{span(4 of 16)} + #{gutter()});
+    margin-left: calc(25% + #{$spacing-l});
     margin-top: $spacing-m;
 }
 
@@ -380,7 +380,9 @@ header a {
     display: flex;
     align-items: center;
     overflow: hidden;
-    @include container;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .banner img {
@@ -390,7 +392,7 @@ header a {
 #search-container {
     position: absolute;
     top: -(2 * $spacing-l);
-    right: gutter();
+    right: $spacing-l;
 }
 
 #search-container input[type="text"],
@@ -819,7 +821,7 @@ footer {
     clear: both;
     
     .resource {
-        padding: $spacing-l gutter();
+        padding: $spacing-l;
         width: 25%;
         font-size: .875 * $base-font-size;
     }
@@ -829,7 +831,7 @@ footer {
     border-top: 1px solid $gray;
     
     .thumbnail {
-        margin-left: gutter(8);
+        margin-left: $spacing-l;
         order: 2;
     }
 
@@ -956,10 +958,10 @@ footer {
 
 .property h4,
 #linked-resources h4 {
-    width: span(3 of 16);
+    width: 18.75%;
     margin: 0;
     text-align: right;
-    padding: 0 gutter();
+    padding: 0 $spacing-l;
     font-size: 1.25 * $base-font-size;
 }
 
@@ -970,8 +972,8 @@ footer {
 
 .property .values,
 .property h4 + .value {
-    width: span(13 of 16);
-    padding: 0 gutter();
+    width: 81.25%;
+    padding: 0 $spacing-l;
 }
 
 .property .values .value:not(:last-child) {
@@ -1049,7 +1051,7 @@ footer {
 }
 
 #linked-resources > h4 {
-    padding: $spacing-s gutter();
+    padding: $spacing-s $spacing-l;
 }
 
 #item-linked .pagination {
@@ -1067,8 +1069,8 @@ footer {
 #linked-resources .linked-resource {
     border-bottom: 1px solid $gray;
     margin-bottom: $spacing-m;
-    width: span(13 of 16);
-    padding: 0 gutter() #{$spacing-m - 1px};
+    width: 81.25%;
+    padding: 0 $spacing-l #{$spacing-m - 1px};
 }
 
 #linked-resources .resource-link {
@@ -1103,7 +1105,7 @@ footer {
     bottom: $spacing-l;
     left: 0;
     right: 0;
-    padding: $spacing-m gutter() (.75 * $spacing-l);
+    padding: $spacing-m $spacing-l (.75 * $spacing-l);
     background-color: rgba(0,0,0,.8);
     color: #fff;
 }
@@ -1199,7 +1201,7 @@ footer {
 
 .page #content .sub-menu {
     padding: 0 $spacing-l $spacing-l 0;
-    width: span(3 of 16);
+    width: 18.75%;
     float: left;
     position: sticky;
     top: $spacing-l;
@@ -1207,7 +1209,7 @@ footer {
 }
 
 .page #content .sub-menu ~ *:not(.site-page-pagination) {
-    width: span(13 of 16);
+    width: 81.25%;
     float: right;
     clear: none;
 }
