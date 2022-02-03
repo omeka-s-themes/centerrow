@@ -9,6 +9,7 @@ $this->headScript()->appendFile($this->assetUrl('js/lightgallery.min.js'));
 $this->headScript()->appendFile($this->assetUrl('js/lg-video.min.js'));
 $this->headScript()->appendFile($this->assetUrl('js/lg-zoom.js'));
 
+$mediaCaption = $this->themeSetting('media_caption');
 $lightMedia = [];
 $otherMedia = [];
 $whitelist = ['image/bmp', 'image/gif', 'image/jpeg', 'image/png', 'image/svg+xml'];
@@ -28,8 +29,15 @@ foreach ($item->media() as $media) {
 <?php if (count($lightMedia) > 0): ?>
 <ul id="itemfiles" class="media-list">
     <?php foreach ($lightMedia as $media): ?>
-        <?php $source = ($media->originalUrl()) ? $media->originalUrl() : $media->source(); ?>
-        <li data-src="<?php echo $source; ?>" data-thumb="<?php echo $escape($media->thumbnailUrl('medium')); ?>"  data-download-url="<?php echo $source; ?>" class="media resource">
+        <?php 
+            $source = ($media->originalUrl()) ? $media->originalUrl() : $media->source(); 
+            $mediaCaptionAttribute = [
+                'none' => '',
+                'title' => 'data-sub-html="' . $media->displayTitle() . '"',
+                'description' => 'data-sub-html="'. $media->displayDescription() . '"'
+            ];
+        ?>
+        <li data-src="<?php echo $source; ?>" <?php echo ($mediaCaption) ? $mediaCaptionAttribute[$mediaCaption] : ''; ?> data-thumb="<?php echo $escape($media->thumbnailUrl('medium')); ?>"  data-download-url="<?php echo $source; ?>" class="media resource">
             <?php echo $media->render(); ?>
         </li>
     <?php endforeach; ?>
