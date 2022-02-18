@@ -948,7 +948,35 @@ footer {
     width: 3 * $spacing-l;
 }
 
-.property {
+.expand:after,
+.collapse:after {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+.expand:after {
+    content: "\f0da";
+}
+
+.collapse:after {
+    content: "\f0d7";
+}
+
+.collapsible {
+    display: none;
+}
+
+.collapse + .collapsible {
+    display: block;
+    padding: $spacing-m $spacing-l;
+
+    h4 {
+        font-size: $base-font-size;
+        line-height: $base-line-height;
+    }
+}
+
+.property  {
     display: flex;
     margin-bottom: $spacing-l;
     flex-wrap: wrap;
@@ -976,6 +1004,12 @@ footer {
     padding: 0 $spacing-l;
 }
 
+.property .values .value {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
 .property .values .value:not(:last-child) {
     border-bottom: 1px solid $gray;
     padding-bottom: $spacing-m - 1px;
@@ -996,11 +1030,26 @@ footer {
     display: inline-block;
     padding: 0 $spacing-s;
     border: 1px solid $gray;
+    margin-right: $spacing-s;
 }
 
 .property .value table {
     margin: 0;
     width: 100%;
+}
+
+.property .value-content:not(:only-child) {
+    margin-right: $spacing-s;
+}
+
+.property .resource-link {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.property .resource-link img {
+    margin-right: $spacing-s;
 }
 
 #linked-resources {
