@@ -1,60 +1,36 @@
 <?php
 $escape = $this->plugin('escapeHtml');
 $this->htmlElement('body')->appendAttribute('class', 'item resource show');
-$this->headLink()->appendStylesheet($this->assetUrl('css/lightslider.min.css'));
-$this->headLink()->appendStylesheet($this->assetUrl('css/lightgallery.min.css'));
-$this->headScript()->appendFile($this->assetUrl('js/show.js'));
-$this->headScript()->appendFile($this->assetUrl('js/lightslider.min.js'));
-$this->headScript()->appendFile($this->assetUrl('js/lightgallery.min.js'));
-$this->headScript()->appendFile($this->assetUrl('js/lg-video.min.js'));
-$this->headScript()->appendFile($this->assetUrl('js/lg-zoom.js'));
 
-$mediaCaption = $this->themeSetting('media_caption');
-$lightMedia = [];
-$otherMedia = [];
-$whitelist = ['image/bmp', 'image/gif', 'image/jpeg', 'image/png', 'image/svg+xml'];
-foreach ($item->media() as $media) {
-    $mediaType = $media->mediaType();
-    $mediaRenderer = $media->renderer();
-    if (in_array($mediaType, $whitelist) || (strpos($mediaRenderer, 'youtube') !== false)) {
-        $lightMedia[] = $media;
-    } else {
-        $otherMedia[] = $media;
-    }
+$embedMediaSetting = $this->siteSetting('item_media_embed');
+$itemMedia = $item->media();
+if ($embedMediaSetting == 1) {
+    $sortedMedia = $this->SortMedia($itemMedia);
+    $lightMedia = (isset($sortedMedia['lightMedia'])) ? $sortedMedia['lightMedia'] : null;
+    $otherMedia = (isset($sortedMedia['otherMedia'])) ? $sortedMedia['otherMedia'] : null;
+} else {
+    $otherMedia = $itemMedia;
 }
 ?>
 
 <?php echo $this->pageTitle($item->displayTitle(), 2); ?>
 <h3><?php echo $this->translate('Item'); ?></h3>
-<?php if (count($lightMedia) > 0): ?>
-<ul id="itemfiles" class="media-list">
-    <?php foreach ($lightMedia as $media): ?>
-        <?php 
-            $source = ($media->originalUrl()) ? $media->originalUrl() : $media->source(); 
-            $mediaCaptionAttribute = [
-                'none' => '',
-                'title' => 'data-sub-html="' . $media->displayTitle() . '"',
-                'description' => 'data-sub-html="'. $media->displayDescription() . '"'
-            ];
-        ?>
-        <li data-src="<?php echo $source; ?>" <?php echo ($mediaCaption) ? $mediaCaptionAttribute[$mediaCaption] : ''; ?> data-thumb="<?php echo $escape($media->thumbnailUrl('medium')); ?>"  data-download-url="<?php echo $source; ?>" class="media resource">
-            <?php echo $media->render(); ?>
-        </li>
-    <?php endforeach; ?>
-</ul>
+
+<?php if (isset($lightMedia)): ?>
+    <?php echo $this->LightGalleryOutput($lightMedia); ?>
 <?php endif; ?>
 
 <div class="properties">
 <?php $this->trigger('view.show.before'); ?>
 <?php echo $item->displayValues(); ?>
 
-<?php if (count($otherMedia) > 0): ?>
+<?php if (isset($otherMedia) && (count($otherMedia) > 0)): ?>
 <div id="other-media" class="property">
     <h4><?php echo $this->translate('Other Media'); ?></h4>
     <div class="values">
         <?php foreach($otherMedia as $media): ?>
         <div class="value">
-            <a href="<?php echo $media->siteUrl(); ?>"><?php echo $media->displayTitle(); ?></a>
+            <?php echo $media->linkPretty(); ?>
         </div>
         <?php endforeach; ?>
     </div>

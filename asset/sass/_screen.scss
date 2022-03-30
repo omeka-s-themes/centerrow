@@ -898,54 +898,82 @@ footer {
 
 /* @group ----- Show ----- */
 
-#itemfiles,
-.lSSlideOuter .media-render {
-    margin: 0;
-    background-color: rgba(0,0,0,.8);
-    width: 100%;
-}
-
 #itemfiles {
-    margin: 0 auto $spacing-l;
-    text-align: center;
-    min-height: 50vh !important;
-}
-
-#itemfiles li {
-    bottom: 0;
-}
-
-.lSSlideOuter ul.lSPager.lSGallery {
-    margin: auto;
     margin-bottom: $spacing-l;
+    height: 0;
+    padding-bottom: 50vh;
+
+    li {
+        display: none;
+    }
+}
+
+.media-render img {
+    vertical-align: top;
+}
+
+#content #itemfiles a {
+    background-color: transparent;
+}
+
+.media.show .media-render.video {
+    margin-bottom: $spacing-l;
+    text-align: center;
+    background-color: #000;
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-}
-
-.lSSlideOuter .media-render {
-    height: 100%;
-    display: flex;
     justify-content: center;
-    align-items: center;
+    padding-bottom: 2.25 * $spacing-l;
+
+    video {
+        width: auto;
+        max-height: 50vh;
+        max-width: 100%;
+    }
 }
 
-.lSSlideOuter .media-render a {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+@font-face {
+    font-family:lg;
+    src:url(../fonts/lg.woff2?io9a6k) format("woff2"),
+    url(../fonts/lg.ttf?io9a6k) format("truetype"),
+    url(../fonts/lg.woff?io9a6k) format("woff"),
+    url(../fonts/lg.svg?io9a6k#lg) format("svg");
+    font-weight:400;
+    font-style:normal;
+    font-display:block
 }
 
-.lSSlideOuter .media-render img {
-    max-height: 100%;
-    width: auto;
+.media-render a.lg-icon {
+    font-family: lg !important;
+    speak: never;
+    font-size: 1.5 * $base-font-size;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    height: 2 * $spacing-l;
+    width: 2 * $spacing-l;
+    display: inline-block;
+    color: #fff;
+    opacity: .5;
+    margin-top: $spacing-m;
+    text-align: center;
 }
 
-.lSPager img {
-    margin: 0 $spacing-m $spacing-m 0;
-    vertical-align: bottom;
-    width: 3 * $spacing-l;
+.media-render a.lg-icon:hover {
+    opacity: 1;
+}
+
+.lg-download:after {
+    content: '\e0f2';
+}
+
+.lg-toolbar {
+    width: 100%;
+    text-align: right;
 }
 
 .expand:after,
