@@ -944,6 +944,25 @@ footer {
     font-display:block
 }
 
+.lg-outer.lg-first-slide-loading .lg-actual-size, 
+.lg-outer.lg-first-slide-loading .lg-zoom-in, 
+.lg-outer.lg-first-slide-loading .lg-zoom-out, 
+.lg-outer[data-lg-slide-type="iframe"] .lg-actual-size, 
+.lg-outer[data-lg-slide-type="iframe"] .lg-zoom-in, 
+.lg-outer[data-lg-slide-type="iframe"] .lg-zoom-out, 
+.lg-outer[data-lg-slide-type="video"] .lg-actual-size, 
+.lg-outer[data-lg-slide-type="video"] .lg-zoom-in, 
+.lg-outer[data-lg-slide-type="video"] .lg-zoom-out {
+    display: none;
+}
+
+.lg-counter {
+    min-width: 50px;
+    padding-left: 0;
+    margin-left: 20px;
+    text-align: center;
+}
+
 .media-render a.lg-icon {
     font-family: lg !important;
     speak: never;
