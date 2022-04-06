@@ -296,14 +296,14 @@ limitations under the License.
                     .addClass(settings.openClass)
                     .attr('aria-hidden', 'false');
 
-                if (topli.length) {
+                /* if (topli.length) {
                     var pageScrollPosition = $('html')[0].scrollTop;
                     var openPanelTopPosition = topli.offset().top;
 
                     if (pageScrollPosition > openPanelTopPosition) {
                         $('html')[0].scrollTop = openPanelTopPosition;
                     }
-                }
+                }*/
 
                 if (event.type === 'mouseover' && target.is(':tabbable') && topli.length === 1 && panel.length === 0 && menu.has(document.activeElement).length > 0) {
                     target.focus();

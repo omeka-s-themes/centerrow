@@ -352,6 +352,9 @@ header nav li {
 
 header nav a {
     font-size: .875 * $base-font-size;
+}
+
+header .navigation > .nav-item > a {
     height: 100%;
 }
 
