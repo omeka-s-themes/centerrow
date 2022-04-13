@@ -1090,6 +1090,7 @@ footer {
     padding: 0 $spacing-s;
     border: 1px solid $gray;
     margin-right: $spacing-s;
+    align-self: flex-start;
 }
 
 .property .value table {
