@@ -10,6 +10,7 @@
             closable: false,
             thumbnail: true,
             selector: '.media.resource',
+            exThumbImage: 'data-thumb',
             showMaximizeIcon: true,
             autoplayFirstVideo: false,
             plugins: [
