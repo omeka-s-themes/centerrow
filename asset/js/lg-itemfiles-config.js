@@ -13,6 +13,12 @@
             exThumbImage: 'data-thumb',
             showMaximizeIcon: true,
             autoplayFirstVideo: false,
+            zoom: 1,
+            showZoomInOutIcons: true,
+            actualSizeIcons: {
+                zoomIn: 'hidden', 
+                zoomOut: 'o-icon-undo',
+            },
             plugins: [
                 lgThumbnail,lgZoom,lgVideo,
             ],

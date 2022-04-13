@@ -966,6 +966,14 @@ footer {
     text-align: center;
 }
 
+.lg-icon.hidden {
+    display: none;
+}
+
+.lg-icon.o-icon-undo {
+    font-size: 16px;
+}
+
 .media-render a.lg-icon {
     font-family: lg !important;
     speak: never;
