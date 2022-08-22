@@ -1035,7 +1035,8 @@ footer {
     }
 }
 
-.property  {
+.property,
+.media-list  {
     display: flex;
     margin-bottom: $spacing-l;
     flex-wrap: wrap;
@@ -1043,8 +1044,7 @@ footer {
     clear: both;
 }
 
-.property h4,
-#linked-resources h4 {
+.resource-metadata h4 {
     width: 18.75%;
     margin: 0;
     text-align: right;
@@ -1057,22 +1057,30 @@ footer {
     font-size: $base-font-size;
 }
 
-.property .values,
-.property h4 + .value {
+.resource-metadata .values,
+.resource-metadata h4 ~ .value,
+.media-list h4 ~ .resource-link {
     width: 81.25%;
     padding: 0 $spacing-l;
+}
+
+.resource-metadata .value:not(:last-child),
+.media-list h4 ~ .resource-link:not(:last-child),
+#linked-resources .linked-resource {
+    padding-bottom: $spacing-s;
+    margin-bottom: $spacing-s;
+    border-bottom: 1px solid $gray;
+}
+
+.resource-metadata h4 ~ .value:last-child,
+.media-list h4 ~ .resource-link:last-child {
+    border-bottom-color: transparent;
 }
 
 .property .values .value {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-}
-
-.property .values .value:not(:last-child) {
-    border-bottom: 1px solid $gray;
-    padding-bottom: $spacing-m - 1px;
-    margin-bottom: $spacing-m;
 }
 
 .property .value > *:first-child {
@@ -1102,13 +1110,13 @@ footer {
     margin-right: $spacing-s;
 }
 
-.property .resource-link {
+.resource-metadata .resource-link {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
 }
 
-.property .resource-link img {
+.resource-metadata .resource-link img {
     margin-right: $spacing-s;
 }
 
@@ -1168,18 +1176,12 @@ footer {
     text-align: right;
 }
 
+.resource.show .resource-link img,
 #item-linked .resource-link img {
     height: 1.5 * $spacing-l;
     width: auto;
     display: block;
     margin-right: $spacing-s;
-}
-
-#linked-resources .linked-resource {
-    border-bottom: 1px solid $gray;
-    margin-bottom: $spacing-m;
-    width: 81.25%;
-    padding: 0 $spacing-l #{$spacing-m - 1px};
 }
 
 #linked-resources .resource-link {
