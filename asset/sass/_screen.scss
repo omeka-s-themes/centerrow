@@ -1116,7 +1116,8 @@ footer {
     flex-wrap: wrap;
 }
 
-.resource-metadata .resource-link img {
+.resource-metadata .resource-link img,
+.results .resource-link img {
     margin-right: $spacing-s;
 }
 
@@ -1177,14 +1178,16 @@ footer {
 }
 
 .resource.show .resource-link img,
-#item-linked .resource-link img {
+#item-linked .resource-link img,
+.results .resource-link img {
     height: 1.5 * $spacing-l;
     width: auto;
     display: block;
     margin-right: $spacing-s;
 }
 
-#linked-resources .resource-link {
+#linked-resources .resource-link,
+.results .resource-link {
     display: flex;
     align-items: center;
 }
