@@ -28,15 +28,12 @@ $sortHeadings = [
 
 ?>
 <?php if (isset($itemSet)): ?>
-<?php $this->htmlElement('body')->appendAttribute('class', 'item-set');
+<?php $this->htmlElement('body')->appendAttribute('class', 'item-set show');
     $query['item_set_id'] = $itemSet->id(); ?>
-<?php endif; ?>
-
-<?php if (isset($itemSet)): ?>
     <?php echo $this->pageTitle($itemSet->displayTitle(), 2); ?>
     <h3><?php echo $translate('Item Set'); ?></h3>
-    <div class="metadata">
-        <?php echo $itemSet->displayValues(); ?>
+    <div class="resource-metadata">
+        <?php echo $this->resourcePageBlocks($itemSet); ?>
     </div>
     <?php echo $this->pageTitle($translate('Items'), 3); ?>
 <?php else: ?>

@@ -17,6 +17,7 @@ if ($embedMediaSetting == 1) {
 <h3><?php echo $this->translate('Item'); ?></h3>
 
 <div class="resource-metadata">
+    <?php $this->trigger('view.show.before'); ?>
     <?php echo $this->resourcePageBlocks($item); ?>
     <?php $this->trigger('view.show.after'); ?>
 </div>
