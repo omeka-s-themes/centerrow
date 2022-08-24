@@ -1044,6 +1044,7 @@ footer {
     clear: both;
 }
 
+.item-with-metadata h4,
 .resource-metadata h4 {
     width: 18.75%;
     margin: 0;
@@ -1058,6 +1059,7 @@ footer {
 }
 
 .resource-metadata .values,
+.item-with-metadata .values,
 .resource-metadata h4 ~ .value,
 .media-list h4 ~ .resource-link {
     width: 81.25%;
