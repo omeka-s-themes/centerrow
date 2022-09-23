@@ -1,5 +1,6 @@
 <?php
 $escape = $this->plugin('escapeHtml');
+$this->headLink()->prependStylesheet($this->assetUrl('css/resource-page-blocks', 'Omeka'));
 $this->htmlElement('body')->appendAttribute('class', 'item resource show');
 
 $embedMediaSetting = $this->siteSetting('item_media_embed');
@@ -18,7 +19,7 @@ if ($embedMediaSetting == 1) {
 
 <div class="resource-metadata">
     <?php $this->trigger('view.show.before'); ?>
-    <?php echo $this->resourcePageBlocks($item); ?>
+    <?php echo $this->resourcePageBlocks($item)->getBlocks(); ?>
     <?php $this->trigger('view.show.after'); ?>
 </div>
 

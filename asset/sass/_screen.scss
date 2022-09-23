@@ -1044,9 +1044,11 @@ footer {
     clear: both;
 }
 
-.item-with-metadata h4,
-.resource-metadata h4 {
+.item-with-metadata dt,
+.resource-metadata dt {
     width: 18.75%;
+    font-weight: bold;
+    color: #000;
     margin: 0;
     text-align: right;
     padding: 0 $spacing-l;
@@ -1058,28 +1060,31 @@ footer {
     font-size: $base-font-size;
 }
 
-.resource-metadata .values,
-.item-with-metadata .values,
-.resource-metadata h4 ~ .value,
-.media-list h4 ~ .resource-link {
+.resource-metadata {
+    width: 100%;
+}
+
+.resource-metadata dt ~ .value,
+.media-list dt ~ .resource-link {
     width: 81.25%;
     padding: 0 $spacing-l;
+    margin-left: 0;
 }
 
 .resource-metadata .value:not(:last-child),
-.media-list h4 ~ .resource-link:not(:last-child),
+.media-list dt ~ .resource-link:not(:last-child),
 #linked-resources .linked-resource {
     padding-bottom: $spacing-s;
     margin-bottom: $spacing-s;
     border-bottom: 1px solid $gray;
 }
 
-.resource-metadata h4 ~ .value:last-child,
-.media-list h4 ~ .resource-link:last-child {
+.resource-metadata dt ~ .value:last-child,
+.media-list dt ~ .resource-link:last-child {
     border-bottom-color: transparent;
 }
 
-.property .values .value {
+.property .value {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
