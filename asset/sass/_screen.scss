@@ -1042,10 +1042,10 @@ footer {
     flex-wrap: wrap;
     justify-content: flex-end;
     clear: both;
+    width: 100%;
 }
 
-.item-with-metadata dt,
-.resource-metadata dt {
+.resource.show dt {
     width: 18.75%;
     font-weight: bold;
     color: #000;
@@ -1064,7 +1064,7 @@ footer {
     width: 100%;
 }
 
-.resource-metadata dt ~ .value,
+.resource.show dt ~ .value,
 .media-list dt ~ .resource-link {
     width: 81.25%;
     padding: 0 $spacing-l;
@@ -1117,7 +1117,7 @@ footer {
     margin-right: $spacing-s;
 }
 
-.resource-metadata .resource-link {
+.resource.show .resource-link {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
