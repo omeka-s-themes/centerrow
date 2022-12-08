@@ -1113,6 +1113,10 @@ footer {
     width: 100%;
 }
 
+.property .value:not(:last-child) .resource-link {
+    margin-bottom: $spacing-m;
+}
+
 .property .value-content:not(:only-child) {
     margin-right: $spacing-s;
 }
