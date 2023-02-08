@@ -1027,11 +1027,21 @@ footer {
 
 .collapse + .collapsible {
     display: block;
-    padding: $spacing-m $spacing-l;
+    width: 100%;
+    border-left: 1px solid $gray;
+    margin-top: $spacing-m;
 
-    h4 {
-        font-size: $base-font-size;
+    dt {
+        font-size: $base-font-size !important;
         line-height: $base-line-height;
+    }
+
+    dl {
+        margin-top: $spacing-m;
+    }
+
+    .property {
+        margin-bottom: $spacing-m;
     }
 }
 
