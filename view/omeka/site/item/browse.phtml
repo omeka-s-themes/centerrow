@@ -1,6 +1,11 @@
 <?php
 $escape = $this->plugin('escapeHtml');
 $translate = $this->plugin('translate');
+$thumbnail = $this->plugin('thumbnail');
+$filterLocale = (bool) $this->siteSetting('filter_locale_values');
+$lang = $this->lang();
+$valueLang = $filterLocale ? [$lang, ''] : null;
+
 $this->headScript()->appendFile($this->assetUrl('js/browse.js'));
 if(isset($itemSet)) {
     $this->headLink()->prependStylesheet($this->assetUrl('css/resource-page-blocks', 'Omeka'));
@@ -12,7 +17,7 @@ $query = $this->params()->fromQuery();
 <?php if (isset($itemSet)): ?>
 <?php $this->htmlElement('body')->appendAttribute('class', 'item-set show');
     $query['item_set_id'] = $itemSet->id(); ?>
-    <?php echo $this->pageTitle($itemSet->displayTitle(), 2); ?>
+    <?php echo $this->pageTitle($itemSet->displayTitle(null, $valueLang), 2); ?>
     <h3><?php echo $translate('Item Set'); ?></h3>
     <div class="resource-metadata">
         <?php echo $this->resourcePageBlocks($itemSet)->getBlocks(); ?>
@@ -50,15 +55,16 @@ $query = $this->params()->fromQuery();
     
     <?php foreach ($items as $item): ?>
     <?php
-    $heading = $headingTerm ? $item->value($headingTerm, ['default' => $translate('[Untitled]')]) : $item->displayTitle();
-    $body = $bodyTerm ? $item->value($bodyTerm) : $item->value('dcterms:date');
+    $heading = $headingTerm ? $item->value($headingTerm, ['default' => $translate('[Untitled]'), 'lang' => $valueLang]) : $item->displayTitle(null, $valueLang);
+    $body = $bodyTerm ? $item->value($bodyTerm, ['lang' => $valueLang]) : $item->displayDescription(null, $valueLang);
     ?>
+    <?php echo $this->siteSetting('browse_body_property_term'); ?>
     <li class="item resource">
-        <?php if ($thumbnail = $this->thumbnail($item, 'medium')): ?>
-        <?php echo $item->linkRaw($thumbnail, null, ['class' => 'thumbnail']); ?>
+        <?php if ($itemThumbnail = $thumbnail($item, 'medium')): ?>
+        <?php echo $item->linkRaw($itemThumbnail, null, ['class' => 'thumbnail']); ?>
         <?php endif; ?>
         <div class="resource-meta">
-            <h4><?php echo $item->linkRaw($heading); ?></h4>
+            <?php echo $item->linkRaw($heading); ?>
             <div class="date"><?php echo $escape($body); ?></div>
         </div>
     </li>
