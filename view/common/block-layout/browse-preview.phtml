@@ -40,7 +40,6 @@ foreach ($this->resources as $resource):
     $body = $bodyTerm ? $resource->value($bodyTerm, ['lang' => $valueLang]) : $resource->displayDescription(null, $valueLang);
 ?>
     <li class="<?php echo $this->resourceType; ?> resource">
-        <?php echo $this->siteSetting('browse_body_property_term'); ?>
         <?php
         $linkContent = '';
         if ($showThumbnail):
