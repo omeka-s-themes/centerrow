@@ -57,14 +57,15 @@ $query = $this->params()->fromQuery();
     <?php
     $heading = $headingTerm ? $item->value($headingTerm, ['default' => $translate('[Untitled]'), 'lang' => $valueLang]) : $item->displayTitle(null, $valueLang);
     $body = $bodyTerm ? $item->value($bodyTerm, ['lang' => $valueLang]) : $item->displayDescription(null, $valueLang);
+    $linkContent = '';
+    if ($thumbnail = $this->thumbnail($item, 'medium', ['class' => 'thumbnail'])) {
+        $linkContent .= $thumbnail;
+    }
+    $linkContent .= $heading;
     ?>
-    <?php echo $this->siteSetting('browse_body_property_term'); ?>
     <li class="item resource">
-        <?php if ($itemThumbnail = $thumbnail($item, 'medium')): ?>
-        <?php echo $item->linkRaw($itemThumbnail, null, ['class' => 'thumbnail']); ?>
-        <?php endif; ?>
         <div class="resource-meta">
-            <?php echo $item->linkRaw($heading); ?>
+            <?php echo $item->linkRaw($linkContent); ?>
             <div class="date"><?php echo $escape($body); ?></div>
         </div>
     </li>

@@ -829,14 +829,19 @@ footer {
         width: 25%;
         font-size: .875 * $base-font-size;
     }
+
+    .thumbnail {
+        display: block;
+        margin-bottom: $spacing-m;
+    }
 }
 
 .resource-list.list {
     border-top: 1px solid $gray;
     
     .thumbnail {
+        float: right;   
         margin-left: $spacing-l;
-        order: 2;
     }
 
     .resource {
@@ -845,9 +850,8 @@ footer {
         padding: $spacing-l 0;
     }
 
-    .resource-meta:not(:only-child) {
-        width: 75%;
-        order: 1;
+    .resource-meta {
+        width: 100%;
     }
     
     h4 {
@@ -856,6 +860,10 @@ footer {
 }
 
 #collection-items h2 {
+    width: 100%;
+}
+
+.browse .resource-list .resource-link {
     width: 100%;
 }
 
