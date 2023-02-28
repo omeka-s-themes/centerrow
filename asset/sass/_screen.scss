@@ -853,10 +853,6 @@ footer {
     .resource-meta {
         width: 100%;
     }
-    
-    h4 {
-        margin-top: 0;
-    }
 }
 
 #collection-items h2 {
@@ -864,7 +860,7 @@ footer {
 }
 
 .browse .resource-list .resource-link {
-    width: 100%;
+    font-weight: bold;
 }
 
 .browse .resource h4 {

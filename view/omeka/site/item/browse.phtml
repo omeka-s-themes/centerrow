@@ -65,7 +65,7 @@ $query = $this->params()->fromQuery();
     ?>
     <li class="item resource">
         <div class="resource-meta">
-            <?php echo $item->linkRaw($linkContent); ?>
+            <?php echo $item->linkRaw($linkContent, null, ['class' => 'resource-link']); ?>
             <div class="date"><?php echo $escape($body); ?></div>
         </div>
     </li>
