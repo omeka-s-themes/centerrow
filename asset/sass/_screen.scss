@@ -1060,7 +1060,7 @@ footer {
 }
 
 .resource.show dt {
-    width: 18.75%;
+    width: 25%;
     font-weight: bold;
     color: #000;
     margin: 0;
@@ -1080,7 +1080,7 @@ footer {
 
 .resource.show dt ~ .value,
 .media-list dt ~ .resource-link {
-    width: 81.25%;
+    width: 75%;
     padding: 0 $spacing-l;
     margin-left: 0;
 }
@@ -1138,7 +1138,6 @@ footer {
 .resource.show .resource-link {
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
 }
 
 .resource-metadata .resource-link img,

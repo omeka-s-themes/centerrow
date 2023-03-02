@@ -160,14 +160,19 @@ footer {
 
 /* @group ----- Show ----- */
 
-.property h4,
-.property .values,
+.resource.show dt,
+.resource.show dt ~ .value, 
+.media-list dt ~ .resource-link,
 #linked-filter,
 #linked-resources .pagination,
-#linked-resources > h4,
+#linked-resources > dt,
 #linked-resources .linked-resource {
     width: 100%;
     text-align: left;
+}
+
+.resource.show dt {
+    margin-bottom: $spacing-s;
 }
 
 .linked-header,
