@@ -141,10 +141,6 @@ footer {
     display: block;
     overflow: hidden;
     
-    .resource-meta:not(:only-child) {
-        width: 100%;
-    }
-    
     .thumbnail {
         width: 100%;
         margin: 0 0 $spacing-m 0;

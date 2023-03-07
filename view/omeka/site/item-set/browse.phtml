@@ -45,12 +45,10 @@ foreach ($itemSets as $itemSet):
     $linkContent .= $heading;
 ?>
     <li class="item-set resource">
-        <div class="resource-meta">
-            <?php echo $itemSet->linkRaw($linkContent, null, ['class' => 'resource-link']); ?>
-            <?php if ($body): ?>
-            <div class="description"><?php echo $escape($body); ?></div>
-            <?php endif; ?>
-        </div>
+        <?php echo $itemSet->linkRaw($linkContent, null, ['class' => 'resource-link']); ?>
+        <?php if ($body): ?>
+        <div class="description"><?php echo $escape($body); ?></div>
+        <?php endif; ?>
     </li>
 <?php endforeach; ?>
 </ul>

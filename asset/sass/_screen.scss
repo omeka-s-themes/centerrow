@@ -845,14 +845,11 @@ footer {
     }
 
     .resource {
-        display: flex;
         border-bottom: 1px solid $gray;
         padding: $spacing-l 0;
+        overflow: hidden;
     }
 
-    .resource-meta {
-        width: 100%;
-    }
 }
 
 #collection-items h2 {

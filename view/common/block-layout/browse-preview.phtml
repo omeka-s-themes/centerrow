@@ -45,16 +45,14 @@ foreach ($this->resources as $resource):
         if ($showThumbnail):
             $linkContent .= $this->thumbnail($resource, 'medium', ['title' => $heading, 'class' => 'thumbnail']);
         endif;
-        if ($showHeading || $showBody || $showThumbnail):
-            echo '<div class="resource-meta">';
-            if ($showHeading):
-                $linkContent .= '<span class="resource-name">' . $escape($heading) . '</span>';
-            endif;
+        if ($showHeading):
+            $linkContent .= '<span class="resource-name">' . $escape($heading) . '</span>';
+        endif;
+        if ($linkContent !== ''):
             echo $resource->linkRaw($linkContent, null, ['class' => 'resource-link']);
-            if ($showBody && $body):
+        endif;
+        if ($showBody && $body):
             echo '<div class="description">' . $escape($body) . '</div>';
-            endif;
-            echo '</div>';
         endif;
         ?>
     </li>

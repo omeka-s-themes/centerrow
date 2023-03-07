@@ -64,10 +64,8 @@ $query = $this->params()->fromQuery();
     $linkContent .= $heading;
     ?>
     <li class="item resource">
-        <div class="resource-meta">
-            <?php echo $item->linkRaw($linkContent, null, ['class' => 'resource-link']); ?>
-            <div class="date"><?php echo $escape($body); ?></div>
-        </div>
+        <?php echo $item->linkRaw($linkContent, null, ['class' => 'resource-link']); ?>
+        <div class="date"><?php echo $escape($body); ?></div>
     </li>
     <?php endforeach; ?>
 </ul>
