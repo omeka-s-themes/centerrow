@@ -1029,13 +1029,6 @@ footer {
 .collapse + .collapsible {
     display: block;
     width: 100%;
-    border-left: 1px solid $gray;
-    margin-top: $spacing-m;
-
-    dt {
-        font-size: $base-font-size !important;
-        line-height: $base-line-height;
-    }
 
     dl {
         margin-top: $spacing-m;
@@ -1066,6 +1059,11 @@ footer {
     font-size: 1.25 * $base-font-size;
 }
 
+.resource.show dl dl dt {
+    font-size: $base-font-size !important;
+    line-height: $base-line-height;
+}
+
 .property .field-term {
     display: block;
     font-size: $base-font-size;
@@ -1075,11 +1073,31 @@ footer {
     width: 100%;
 }
 
-.resource.show dt ~ .value,
+.resource.show dl dl {
+    display: flex;
+    flex-wrap: wrap;
+    border-left: 1px solid $gray;
+    margin: $spacing-l 0;
+}
+
+.resource.show dt ~ dd,
 .media-list dt ~ .resource-link {
     width: 75%;
     padding: 0 $spacing-l;
     margin-left: 0;
+}
+
+.resource.show .property dl dt,
+.resource.show .property dl dd {
+    margin-bottom: $spacing-m;
+
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+}
+
+.resource.show .property .property {
+    margin-bottom: 0;
 }
 
 .resource-metadata .value:not(:last-child),
@@ -1097,7 +1115,6 @@ footer {
 
 .property .value {
     display: flex;
-    align-items: center;
     flex-wrap: wrap;
 }
 
