@@ -1074,6 +1074,7 @@ footer {
 }
 
 .resource.show dl dl {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     border-left: 1px solid $gray;
@@ -1113,9 +1114,8 @@ footer {
     border-bottom-color: transparent;
 }
 
-.property .value {
-    display: flex;
-    flex-wrap: wrap;
+.property .value:not(:last-child) {
+    margin-bottom: $spacing-m;
 }
 
 .property .value > *:first-child {
@@ -1494,6 +1494,10 @@ footer {
 
 a.metadata-browse-link {
     display: block;
+}
+
+.uri-dereferencer-markup:empty {
+    display: none;
 }
 
 /* @end */
