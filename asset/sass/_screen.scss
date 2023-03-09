@@ -1141,6 +1141,16 @@ footer {
     width: 100%;
 }
 
+.property .value.resource .resource-link {
+    float: left;
+    max-width: 80%;
+}
+
+.property .value.resource .expand,
+.property .value.resource .collapse {
+    line-height: 1.5 * $base-line-height;
+}
+
 .property .value:not(:last-child) .resource-link {
     margin-bottom: $spacing-m;
 }
