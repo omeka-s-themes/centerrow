@@ -210,6 +210,19 @@ footer {
     flex: 2;
 }
 
+.media-embeds * {
+    max-width: 100%;
+    height: auto;
+}
+
+.media-embeds .file {
+    margin-bottom: $spacing-l;
+}
+
+.property .value:not(:last-child) .resource-link {
+    margin-bottom: 0;
+}
+
 /* @end */
 
 /* @group ----- Search ----- */
