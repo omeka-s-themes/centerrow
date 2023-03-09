@@ -157,7 +157,7 @@ footer {
 /* @group ----- Show ----- */
 
 .resource.show dt,
-.resource.show dt ~ .value, 
+.resource.show dt ~ dd, 
 .media-list dt ~ .resource-link,
 #linked-filter,
 #linked-resources .pagination,
@@ -167,8 +167,28 @@ footer {
     text-align: left;
 }
 
-.resource.show dt {
+.resource.show .property > dt,
+.resource.show dt  ~ dd.value { 
+    padding: 0;
+}
+
+.resource.show dl dt, 
+.resource.show dt ~ dd, 
+.media-list dt ~ .resource-link,
+.resource.show .collapsible .property {
+    padding-left: $spacing-m;
+}
+
+.resource.show .collapsible .property:not(:last-child) {
+    margin-bottom: $spacing-m;
+}
+
+.resource.show .property > dt { 
     margin-bottom: $spacing-s;
+}
+
+.resource.show .property dl dt { 
+    margin-bottom: 0;
 }
 
 .linked-header,
