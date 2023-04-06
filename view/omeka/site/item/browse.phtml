@@ -57,11 +57,9 @@ $query = $this->params()->fromQuery();
     <?php
     $heading = $headingTerm ? $item->value($headingTerm, ['default' => $translate('[Untitled]'), 'lang' => $valueLang]) : $item->displayTitle(null, $valueLang);
     $body = $bodyTerm ? $item->value($bodyTerm, ['lang' => $valueLang]) : $item->displayDescription(null, $valueLang);
-    $linkContent = '';
-    if ($thumbnail = $this->thumbnail($item, 'medium', ['class' => 'thumbnail'])) {
-        $linkContent .= $thumbnail;
-    }
-    $linkContent .= $heading;
+    $linkContent = sprintf('%s<span class="resource-name">%s</span>',
+            $thumbnail($item, 'medium', ['class' => 'thumbnail']),
+            $escape($heading));
     ?>
     <li class="item resource">
         <?php echo $item->linkRaw($linkContent, null, ['class' => 'resource-link']); ?>

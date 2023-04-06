@@ -1,6 +1,8 @@
 <?php
 $translate = $this->plugin('translate');
 $escape = $this->plugin('escapeHtml');
+$thumbnail = $this->plugin('thumbnail');
+
 $this->headScript()->appendFile($this->assetUrl('js/browse.js'));
 $filterLocale = (bool) $this->siteSetting('filter_locale_values');
 $lang = $this->lang();
@@ -38,11 +40,9 @@ $bodyTerm = $this->siteSetting('browse_body_property_term');
 foreach ($itemSets as $itemSet):
     $heading = $headingTerm ? $itemSet->value($headingTerm, ['default' => $translate('[Untitled]'), 'lang' => $valueLang]) : $itemSet->displayTitle(null, $valueLang);
     $body = $bodyTerm ? $itemSet->value($bodyTerm, ['lang' => $valueLang]) : $itemSet->displayDescription(null, $valueLang);
-    $linkContent = '';
-    if ($thumbnail = $this->thumbnail($itemSet, 'medium', ['class' => 'thumbnail'])) {
-        $linkContent .= $thumbnail;
-    }
-    $linkContent .= $heading;
+    $linkContent = sprintf('%s<span class="resource-name">%s</span>',
+        $thumbnail($itemSet, 'medium'),
+        $escape($heading));
 ?>
     <li class="item-set resource">
         <?php echo $itemSet->linkRaw($linkContent, null, ['class' => 'resource-link']); ?>
