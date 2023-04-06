@@ -354,10 +354,6 @@ header nav a {
     font-size: .875 * $base-font-size;
 }
 
-header .navigation > .nav-item > a {
-    height: 100%;
-}
-
 header a {
     text-decoration: none;
 }
@@ -551,8 +547,9 @@ header nav ul {
 
 /* first descendant link within a top level navigation item */
 .nav-item > a {
+    height: 100%;
     position: relative;
-    display: inline-flex;
+    display: inline-block;
     padding: $spacing-s $spacing-m;
     margin: 0 0 -1px 0;
     border: 1px solid transparent;
@@ -589,8 +586,7 @@ header nav > ul > li > .sub-nav-toggle {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     display: inline-block;
-    line-height: 1.5;
-    font-weight: 900;
+    width: $spacing-l;
 }
 
 .nav-menu > .nav-item > [aria-expanded="true"]:after {
