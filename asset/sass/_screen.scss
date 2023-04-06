@@ -9,10 +9,14 @@ html {
 
 a {
     color: $red;
-    text-decoration: none;
+    text-decoration: underline;
 
     &:hover {
-        text-decoration: underline;
+        text-decoration: double underline;
+    }
+
+    &:focus {
+        border: solid 1px $red;
     }
 }
 
@@ -352,10 +356,6 @@ header nav li {
 
 header nav a {
     font-size: .875 * $base-font-size;
-}
-
-header a {
-    text-decoration: none;
 }
 
 .site-title {
