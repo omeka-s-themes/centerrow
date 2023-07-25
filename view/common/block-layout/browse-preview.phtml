@@ -10,7 +10,7 @@ $currentLayout = (strpos($layoutSetting, 'grid') !== false) ? 'grid' : 'list';
 <div class="preview-block browse">
 
 <?php if ($this->heading): ?>
-<h2><?php echo $this->heading; ?></h2>
+<h2><?php echo $escape($this->heading); ?></h2>
 <?php endif; ?>
 
 <?php if (strpos($layoutSetting, 'toggle') !== false): ?>
