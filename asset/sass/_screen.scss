@@ -207,7 +207,6 @@ textarea {
 
 .field .collapsible {
     font-size: .75 * $base-font-size;
-    display: block;
     clear: both;
     line-height: .75 * $base-line-height;
 }
@@ -237,6 +236,11 @@ form input[type="submit"] {
 
 #advanced-search .multi-value div.value:only-of-type .remove-value {
     display: none;
+}
+
+#advanced-search .add-value {
+    display: block;
+    margin-left: auto;
 }
 
 #advanced-search .remove-value {
