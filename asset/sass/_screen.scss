@@ -823,11 +823,23 @@ footer {
     flex-wrap: wrap;
     justify-content: center;
     clear: both;
-    
+
     .resource {
         padding: $spacing-l;
         width: 25%;
         font-size: .875 * $base-font-size;
+    }
+
+    &.resource-count-3 .resource {
+        width: 33.33%;
+    }
+
+    &.resource-count-2 .resource {
+        width: 50%;
+    }
+
+    &.resource-count-1 .resource {
+        width: 100%;
     }
 
     .thumbnail {

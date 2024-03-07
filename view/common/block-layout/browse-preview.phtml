@@ -6,6 +6,8 @@ $layoutSetting = $this->themeSetting('browse_layout', 'grid');
 $gridState = ($layoutSetting == 'togglegrid') ? 'disabled' : '';
 $listState = ($layoutSetting == 'togglelist') ? 'disabled': '';
 $currentLayout = (strpos($layoutSetting, 'grid') !== false) ? 'grid' : 'list';
+$resources = $this->resources;
+$resourceCount = count($resources);
 ?>
 <div class="preview-block browse">
 
@@ -23,7 +25,7 @@ $currentLayout = (strpos($layoutSetting, 'grid') !== false) ? 'grid' : 'list';
 <?php endif; ?>
 
 
-<ul class="resource-list preview <?php echo $currentLayout; ?>">
+<ul class="resource-list preview <?php echo $currentLayout; ?> resource-count-<?php echo $resourceCount; ?>">
 <?php
 $showThumbnail = in_array('thumbnail', $this->components);
 $showHeading = in_array('resource-heading', $this->components);
@@ -35,7 +37,7 @@ $filterLocale = (bool) $this->siteSetting('filter_locale_values');
 $lang = $this->lang();
 $valueLang = $filterLocale ? [$lang, ''] : null;
 
-foreach ($this->resources as $resource):
+foreach ($resources as $resource):
     $heading = $headingTerm ? $resource->value($headingTerm, ['default' => $translate('[Untitled]'), 'lang' => $valueLang]) : $resource->displayTitle(null, $valueLang);
     $body = $bodyTerm ? $resource->value($bodyTerm, ['lang' => $valueLang]) : $resource->displayDescription(null, $valueLang);
 ?>
