@@ -775,6 +775,11 @@ footer {
     text-align: center;
 }
 
+.pagination .inactive.button {
+    display: inline-block;
+    opacity: .5;
+}
+
 .pagination .row-count {
     line-height: 1.5 * $spacing-l;
 }
