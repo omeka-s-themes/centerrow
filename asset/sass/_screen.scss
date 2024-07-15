@@ -43,6 +43,10 @@ p {
     margin: $spacing-l 0;
 }
 
+img {
+    max-width: 100%;
+}
+
 /* @group ----- Mixins ----- */
 
 @mixin de-list {
