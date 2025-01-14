@@ -445,7 +445,7 @@ header nav a {
     color: darken($gray, 15%);
 }
 
-#search-form.closed + .search-toggle {
+#search-form.closed + .search-toggle .icon {
     right: 0;
     border: 1px solid $gray;
     border-top: 0;
