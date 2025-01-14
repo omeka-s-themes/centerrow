@@ -17,7 +17,7 @@ $this->jsTranslate();
 $banner = $this->themeSettingAssetUrl('banner');
 $bannerHeight = $this->themeSetting('banner_height');
 $bannerHeightMobile = $this->themeSetting('banner_height_mobile');
-$bannerPosition = ($this->themeSetting('banner_position')) ? str_replace('_','-', $this->themeSetting('banner_position')) : 'center';
+$bannerPosition = $this->themeSetting('banner_position');
 $this->trigger('view.layout');
 $userBar = $this->userBar();
 ?>
@@ -31,13 +31,13 @@ $userBar = $this->userBar();
         <?php echo $this->headScript(); ?>
         <style>
             .banner {
-                height: <?php echo ($bannerHeight !== '') ? $bannerHeight: 'auto'  ?>;
-                align-items: <?php echo $bannerPosition; ?>;
+                height: <?php echo (isset($bannerHeight) && ($bannerHeight !== '')) ? $bannerHeight: 'auto'  ?>;
+                align-items: <?php echo (isset($bannerPosition) && ($bannerPosition !== '')) ? str_replace('_','-', $bannerPosition) : 'center'; ?>;
             }
         <?php if ($bannerHeightMobile !== ''): ?>
             @media screen and (max-width:640px) {
                 .banner {
-                    height: <?php echo $bannerHeightMobile; ?>;
+                    height: <?php echo (isset($bannerHeightMobile) && ($bannerHeightMobile !== '')) ? $bannerHeightMobile : 'initial'; ?>;
                 }
             }
         <?php endif; ?>
@@ -83,7 +83,7 @@ $userBar = $this->userBar();
                 <?php endif; ?>
             </footer>
         </div>
-        <script type="text/javascript">
+        <script>
         jQuery(document).ready(function () {
             CenterRow.mobileMenu();
             CenterRow.megaMenu();
