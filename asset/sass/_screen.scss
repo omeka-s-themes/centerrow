@@ -753,18 +753,35 @@ footer {
 
 .browse-controls {
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
-    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
+
+    & > * {
+        margin-bottom: $spacing-m;
+        margin-right: $spacing-l;
+    }
+
+    & + .resource-list {
+        margin-top: -1 * $spacing-m;
+    }
+}
+
+.sorting {
+    margin: 0;
+}
+
+.sorting > * {
+    margin-bottom: $spacing-m;
+}
+
+.sorting select {
+    max-width: 10rem;
 }
 
 .sorting button {
     padding: 2px 4px;
-}
-
-.pagination {
-    float: right;
 }
 
 .pagination > * {
@@ -799,10 +816,7 @@ footer {
 [name="page"] {
     width: (3 * $spacing-l);
     text-align: center;
-}
-
-#sort-links {
-    float: right;
+    margin-right: $spacing-s;
 }
 
 .layout-toggle button {
