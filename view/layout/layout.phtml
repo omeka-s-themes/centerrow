@@ -61,7 +61,7 @@ $userBar = $this->userBar();
                 </h1>
                 <div id="search-container">
                     <?php echo $this->partial('common/search-form'); ?>
-                    <button type="button" class="search-toggle" title="<?php echo $translate('Toggle search'); ?>"><span class="sr-only"><?php echo $translate('Toggle search'); ?><span class="icon" aria-hidden="true"></span></button>
+                    <button type="button" class="search-toggle" title="<?php echo $translate('Toggle search'); ?>"><span class="sr-only"><?php echo $translate('Toggle search'); ?></span><span class="icon" aria-hidden="true"></span></button>
                 </div>
                 <?php echo $site->publicNav()->menu()->setPartial('common/accessible-mega-menu.phtml')->renderPartial(); ?>
 
