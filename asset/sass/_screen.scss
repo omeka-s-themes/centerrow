@@ -151,6 +151,13 @@ input[type="submit"] {
     min-width: 1.5 * $spacing-l;
     line-height: $base-line-height;
     text-align: center;
+
+    &:disabled,
+    &.inactive {
+        background-color: #fff;
+        box-shadow: 0 0 0 1px $gray inset;
+        cursor: default;
+    }
 }
 
 a.button {
@@ -734,28 +741,6 @@ footer {
 
 /* @group ----- Browse ----- */
 
-#sort-links {
-    display: inline-block;
-
-    ul {
-        @include de-list;
-        display: inline-block;
-    }
-
-    li {
-        display: inline-block;
-        margin: 0 .5em;
-    }
-
-    a {
-        color: $dark-gray;
-    }
-
-    .sorting a {
-        color: $red;
-    }
-}
-
 .browse-controls {
     display: flex;
     flex-wrap: wrap;
@@ -769,7 +754,7 @@ footer {
     }
 
     & + .resource-list {
-        margin-top: -1 * $spacing-m;
+        margin-top: 0;
     }
 }
 
@@ -787,6 +772,7 @@ footer {
 
 .sorting button {
     padding: 2px 4px;
+    vertical-align: top;
 }
 
 .pagination > * {
@@ -801,9 +787,6 @@ footer {
 
 
 .pagination .button {
-    background-color: #fff;
-    border: 1px solid $gray;
-    height: 1.55 * $spacing-l;
     line-height: 1.5 * $spacing-l;
     padding: 0 $spacing-m;
     text-align: center;
@@ -811,7 +794,6 @@ footer {
 
 .pagination .inactive.button {
     display: inline-block;
-    opacity: .5;
 }
 
 .pagination .row-count {
@@ -844,13 +826,18 @@ footer {
     padding-left: 0;
     list-style: none;
     width: 100%; 
-    
-    a.thumbnail {
-        display: block;
+    border-top: 1px solid $gray;
+
+    .resource-link img {
+        float: right;
+        margin-left: $spacing-l;
+        vertical-align: bottom;
     }
 
-    a.thumbnail img {
-        vertical-align: bottom;
+    .resource {
+        border-bottom: 1px solid $gray;
+        padding: $spacing-l 0;
+        overflow: hidden;
     }
 }
 
@@ -864,6 +851,7 @@ footer {
         padding: $spacing-l;
         width: 25%;
         font-size: .875 * $base-font-size;
+        border-bottom: 0;
     }
 
     &.resource-count-3 .resource {
@@ -878,26 +866,16 @@ footer {
         width: 100%;
     }
 
-    .thumbnail {
+    .resource-name {
+        width: 100%;
         display: block;
-        margin-bottom: $spacing-m;
-    }
-}
-
-.resource-list.list {
-    border-top: 1px solid $gray;
-    
-    .thumbnail {
-        float: right;   
-        margin-left: $spacing-l;
     }
 
-    .resource {
-        border-bottom: 1px solid $gray;
-        padding: $spacing-l 0;
-        overflow: hidden;
+    .resource-link img {
+        display: block;
+        margin: 0 0 $spacing-m;
+        float: none;
     }
-
 }
 
 #collection-items h2 {
