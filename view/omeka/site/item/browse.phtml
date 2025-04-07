@@ -51,19 +51,20 @@ $query = $this->params()->fromQuery();
     <?php
     $headingTerm = $this->siteSetting('browse_heading_property_term');
     $bodyTerm = $this->siteSetting('browse_body_property_term');
-    ?>
-    
+    ?>    
     <?php foreach ($items as $item): ?>
-    <?php
-    $heading = $headingTerm ? $item->value($headingTerm, ['default' => $translate('[Untitled]'), 'lang' => $valueLang]) : $item->displayTitle(null, $valueLang);
-    $body = $bodyTerm ? $item->value($bodyTerm, ['lang' => $valueLang]) : $item->displayDescription(null, $valueLang);
-    $linkContent = sprintf('%s<span class="resource-name">%s</span>',
-            $thumbnail($item, 'medium', ['class' => 'thumbnail']),
-            $escape($heading));
-    ?>
     <li class="item resource">
-        <?php echo $item->linkRaw($linkContent, null, ['class' => 'resource-link']); ?>
-        <div class="date"><?php echo $escape($body); ?></div>
+        <?php
+        $heading = $headingTerm ? $item->value($headingTerm, ['default' => $translate('[Untitled]'), 'lang' => $valueLang]) : $item->displayTitle(null, $valueLang);
+        $body = $bodyTerm ? $item->value($bodyTerm, ['lang' => $valueLang]) : $item->displayDescription(null, $valueLang);
+        $linkContent = sprintf('%s<span class="resource-name">%s</span>',
+            $thumbnail($item, 'medium'),
+            $escape($heading));
+        echo $item->linkRaw($linkContent, null, ['class' => 'resource-link']);
+        ?>
+        <?php if ($body): ?>
+        <div class="description"><?php echo $escape($body); ?></div>
+        <?php endif; ?>
     </li>
     <?php endforeach; ?>
 </ul>
