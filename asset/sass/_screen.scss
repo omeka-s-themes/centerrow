@@ -882,8 +882,13 @@ footer {
     width: 100%;
 }
 
-.browse .resource-list .resource-link {
+.resource-list .resource-link {
     font-weight: bold;
+    flex-wrap: wrap;
+
+    img {
+        height: auto !important;
+    }
 }
 
 .browse .resource h4 {
@@ -1185,7 +1190,7 @@ footer {
     margin-right: $spacing-s;
 }
 
-.resource.show .resource-link {
+.resource.show .resource-metadata .resource-link {
     display: flex;
     align-items: center;
 }
