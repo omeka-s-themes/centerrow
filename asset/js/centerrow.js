@@ -44,20 +44,19 @@ if (!CenterRow) {
     };
 
     CenterRow.mobileMenu = function() {
-        $('.menu-button').click( function(e) {
+        $('header').on('click', '.menu-button', function(e) {
             e.preventDefault();
             $('header nav > ul').toggleClass('open');
         });
     };
 
     $(document).ready(function() {
-
         $('#search-form').addClass('closed');
 
-        $('.search-toggle').click(function() {
-            $('#search-form').toggleClass('closed').toggleClass('open');
+        $('header').on('click', '.search-toggle', function() {
+            $('#search-form').toggleClass('closed open');
             if ($('#search-form').hasClass('open')) {
-                $('#query').focus();
+                $('#fulltext-search').focus();
             }
         });
     });

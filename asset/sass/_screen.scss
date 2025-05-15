@@ -433,6 +433,11 @@ header nav a {
     color: $dark-gray;
 }
 
+#search-container input[type="text"]:focus {
+    position: relative;
+    z-index: 100;
+}
+
 #search-form {
     display: flex;
     padding: $spacing-s $spacing-m $spacing-m;
@@ -450,7 +455,7 @@ header nav a {
     position: absolute;
 }
 
-#search-form + button.search-toggle {
+#search-form ~ button.search-toggle {
     bottom: 0;
     position: absolute;
     border-bottom: 0;
@@ -458,7 +463,7 @@ header nav a {
     padding: 0;
 }
 
-#search-form.closed + .search-toggle .icon {
+#search-form.closed ~ .search-toggle .icon {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -476,7 +481,7 @@ header nav a {
     }
 }
 
-#search-form.open + .search-toggle {
+#search-form.open ~ .search-toggle {
     top: $spacing-s;
     right: 0;
 
