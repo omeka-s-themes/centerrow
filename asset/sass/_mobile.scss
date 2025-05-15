@@ -100,17 +100,10 @@ footer {
 
 .browse-controls {
     flex-direction: row;
+    justify-content: flex-start;
     
     & > * {
-        margin: $spacing-s 0;
-    }
-    
-    .pagination {
-        order: 1;
-    }
-    
-    .sorting {
-        order: 2;
+        margin: $spacing-s $spacing-l $spacing-s 0;
     }
 }
 
