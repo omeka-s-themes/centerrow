@@ -18,12 +18,15 @@ $this->htmlElement('body')->appendAttribute('class', 'item resource browse hiera
 if ($hierarchyGrouping->getLabel()) {
     echo $this->pageTitle($hierarchyGrouping->getLabel(), 2);
     $hierarchyHeadingLevel = 'h3';
+} else if ($hierarchyGrouping->getItemSet()) {
+    echo $this->pageTitle($hierarchyGrouping->getItemSet()->displayTitle(null, $valueLang), 2);
+    $hierarchyHeadingLevel = 'h3';
 }
 ?>
 <div class="hierarchy-row">
 <?php 
 // Iterate through groupings to create nested list in metadata sidebar
-$iterate = function ($groupings, $itemSet) use (&$iterate, &$allGroupings, &$printedGroupings, &$currentHierarchy, &$childCount, &$hierarchyItemSets, $hierarchyGrouping, $valueLang, $hierarchyHeadingLevel) {
+$iterate = function ($groupings, $itemSet, $siteItemSetArray) use (&$iterate, &$allGroupings, &$printedGroupings, &$currentHierarchy, &$childCount, &$hierarchyItemSets, $hierarchyGrouping, $valueLang, $hierarchyHeadingLevel) {
     foreach ($groupings as $key => $grouping) {
         // Continue if grouping has already been printed
         if (isset($printedGroupings) && in_array($grouping, $printedGroupings)) {
@@ -42,7 +45,7 @@ $iterate = function ($groupings, $itemSet) use (&$iterate, &$allGroupings, &$pri
             echo '<ul class="hierarchy-list">';
 
             $allGroupings = $this->api()->search('hierarchy_grouping', ['hierarchy' => $currentHierarchy, 'sort_by' => 'position'])->getContent();
-            $iterate($allGroupings, $itemSet);
+            $iterate($allGroupings, $itemSet, $siteItemSetArray);
             continue;
         }
 
@@ -52,21 +55,25 @@ $iterate = function ($groupings, $itemSet) use (&$iterate, &$allGroupings, &$pri
                 return $parent->id() == $grouping->getParentGrouping();
             });
             if (count($parentArray) > 0) {
-                $iterate($parentArray, $itemSet);
+                $iterate($parentArray, $itemSet, $siteItemSetArray);
                 continue;
             }
         }
 
         if ($grouping->getItemSet()) {
             try {
+                // Ignore item sets not assigned to site
+                if ($siteItemSetArray && !in_array($grouping->getItemSet()->id(), $siteItemSetArray)) {
+                    throw new \Exception;
+                }
                 // If no grouping label, show itemSet title as grouping heading
                 $groupingLabel = $grouping->getLabel() ?: $grouping->getItemSet()->displayTitle(null, $valueLang);
                 $itemSet = $this->api()->read('item_sets', $grouping->getItemSet()->id())->getContent();
                 $hierarchyItemSets[] = $itemSet;
             } catch (\Exception $e) {
-                // Print groupings with private itemSet
+                // ItemSet not found or private
                 $itemSet = '';
-                $groupingLabel = $grouping->getLabel() ?: $this->translate('Private');
+                $groupingLabel = $grouping->getLabel() ? $grouping->getLabel() . $this->translate(' (Private)') : $this->translate('(Private)');
             }
         } else {
             // Print groupings without assigned itemSet
@@ -95,14 +102,25 @@ $iterate = function ($groupings, $itemSet) use (&$iterate, &$allGroupings, &$pri
         }
 
         if (!is_null($itemSet)) {
+            // Point directly to associated item set if hierarchy_link_itemSet checking in config
+            if ($this->siteSetting('hierarchy_link_itemSet')) {
+                $groupingLink = $this->hyperlink($groupingLabel, $this->url('site/resource-id', ['site-slug' => $this->currentSite()->slug(), 'controller' => 'item-set', 'id' => $itemSet->id()]));
+            } else {
+                $groupingLink = $this->hyperlink($groupingLabel, $this->url('site/hierarchy', ['site-slug' => $this->currentSite()->slug(), 'grouping-id' => $grouping->id()]));
+            }
+
+            $itemSetCount = $this->hierarchyHelper()->itemSetCount($grouping, $allGroupings);
             // Show itemSet count if hierarchy_show_count checked in config
-            $itemSetCount = $this->siteSetting('hierarchy_show_count') ? $this->hierarchyHelper()->itemSetCount($grouping, $allGroupings) : '';
+            $itemSetShow = $this->siteSetting('hierarchy_show_count') ? $itemSetCount : '';
             // Bold current page grouping
             if (!empty($groupingLabel)) {
                 if ($grouping->id() == $hierarchyGrouping->id()) {
-                    echo '<li><b>' . $this->hyperlink($groupingLabel, $this->url('site/hierarchy', ['site-slug' => $this->currentSite()->slug(), 'grouping-id' => $grouping->id()])) . '</b>' . $itemSetCount;
+                    echo '<li><b>' . $groupingLink . '</b>' . $itemSetShow;
+                } else if ($itemSetCount == null || (strpos($groupingLabel, '(Private)') !== false)) {
+                    // Don't link to hierarchies without items to display (private etc.)
+                    echo '<li>' . $groupingLabel;
                 } else {
-                    echo '<li>' . $this->hyperlink($groupingLabel, $this->url('site/hierarchy', ['site-slug' => $this->currentSite()->slug(), 'grouping-id' => $grouping->id()])) . $itemSetCount;
+                    echo '<li>' . $groupingLink  . $itemSetShow;
                 }
             }
         }
@@ -124,7 +142,7 @@ $iterate = function ($groupings, $itemSet) use (&$iterate, &$allGroupings, &$pri
             $prevChildArray = $childArray ?: [];
             $childCount = count($childArray);
             echo '<ul>';
-            $iterate($childArray, $itemSet);
+            $iterate($childArray, $itemSet, $siteItemSetArray);
             echo '</ul></li>';
             $childArray = $prevChildArray;
             continue;
@@ -142,27 +160,64 @@ $iterate = function ($groupings, $itemSet) use (&$iterate, &$allGroupings, &$pri
 
 $groupings = $this->api()->search('hierarchy_grouping', ['id' => $hierarchyGrouping->id(), 'sort_by' => 'position'])->getContent();
 if ($groupings) {
+    $siteItemSets = $this->currentSite()->siteItemSets();
+    $siteItemSetArray = array();
+    foreach ($siteItemSets as $siteItemSet) {
+        $siteItemSetArray[] = $siteItemSet->itemSet()->id();
+    }
+
     echo '<div class="hierarchy-metadata"><div class="hierarchy-filters">';
-    $hierarchyItemSets = $iterate($groupings, $itemSet);
+    $hierarchyItemSets = $iterate($groupings, $itemSet, $siteItemSetArray);
     echo '</div>';
-    echo '<div class="hierarchy-item-sets">';
-    if (count($hierarchyItemSets) == 1) {
-        $itemSet = $hierarchyItemSets[0];
-        echo 'Contains resources from: ';
-        echo $itemSet->link($itemSet->displayTitle());
-    } else if (count($hierarchyItemSets) > 1) {
-        $finalItemSet = end($hierarchyItemSets);
-        echo 'Contains resources from: ';
-        foreach ($hierarchyItemSets as $itemSet) {
-            echo $itemSet->link($itemSet->displayTitle());
-            if ($itemSet != $finalItemSet) {
-                echo ', ';
+
+    if ($this->siteSetting('hierarchy_display_itemSets')) {
+        echo '<div class="hierarchy-item-sets">';
+        if (count($hierarchyItemSets) == 1) {
+            echo 'Contains resources from: ';
+            foreach ($hierarchyItemSets as $hierarchyItemSet) {
+                echo $hierarchyItemSet->link($hierarchyItemSet->displayTitle());
+            }
+        } else if (count($hierarchyItemSets) > 1) {
+            $finalItemSet = end($hierarchyItemSets);
+            echo 'Contains resources from: ';
+            foreach ($hierarchyItemSets as $hierarchyItemSet) {
+                echo $hierarchyItemSet->link($hierarchyItemSet->displayTitle());
+                if ($hierarchyItemSet != $finalItemSet) {
+                    echo ', ';
+                }
             }
         }
+        echo '</div>';
     }
-    echo '</div></div>';
+
+    echo '</div>';
 }
 ?>
+
+<?php
+// If hierarchy_show_itemset_metadata checked, display item set metadata
+if ($this->siteSetting('hierarchy_show_itemSet_metadata') && $itemSet):
+    $headingTerm = $this->siteSetting('browse_heading_property_term');
+    $bodyTerm = $this->siteSetting('browse_body_property_term');
+    $heading = $headingTerm ? $itemSet->value($headingTerm, ['default' => $translate('[Untitled]'), 'lang' => $valueLang]) : $itemSet->displayTitle(null, $valueLang);
+    $body = $bodyTerm ? $itemSet->value($bodyTerm, ['lang' => $valueLang]) : $itemSet->displayDescription(null, $valueLang);
+?>
+<ul class="resource-list">
+<li class="item-set resource">
+    <div class="hierarchy-itemset-metadata">
+        <?php
+        $linkContent = sprintf('%s<span class="resource-name">%s</span>',
+            $thumbnail($itemSet, 'medium'),
+            $escape($heading));
+        echo $itemSet->linkRaw($linkContent, null, ['class' => 'resource-link']);
+        ?>
+        <?php if ($body): ?>
+        <div class="description"><?php echo $escape($body); ?></div>
+        <?php endif; ?>
+    </div>
+</li>
+</ul>
+<?php endif; ?>
 
     <div class="hierarchy-items">
         <?php echo '<h3>' . $escape($translate('Items')) . '</h3>'; ?>
