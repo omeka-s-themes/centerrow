@@ -102,14 +102,18 @@ td {
 
 ::-webkit-input-placeholder {
     font-style: italic;
+    color: $dark-gray;
 }
 ::-moz-placeholder {
     font-style: italic;
+    color: $dark-gray;
 }
 :-ms-input-placeholder {
     font-style: italic;
+    color: $dark-gray;
 }
 :-moz-placeholder {
+    color: $dark-gray;
     font-style: italic;
 }
 
