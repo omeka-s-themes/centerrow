@@ -1049,8 +1049,18 @@ footer {
     text-align: right;
 }
 
+a.expand,
+a.collapse {
+    text-decoration: none;
+}
+
 .expand:after,
 .collapse:after {
+    display: inline-block;
+    min-height: $spacing-l;
+    min-width: $spacing-l;
+    text-align: center;
+    line-height: 1;
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
 }
