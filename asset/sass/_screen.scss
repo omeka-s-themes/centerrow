@@ -207,9 +207,13 @@ textarea {
 
 .field .field-meta {
     width: 25%;
-    padding-right: $spacing-l;
     text-align: right;
     line-height: 1.5 * $base-line-height;
+}
+
+.field .field-meta label,
+.field .field-meta .label {
+    font-weight: bold;
 }
 
 .field-description {
@@ -262,9 +266,15 @@ form input[type="submit"] {
     display: none;
 }
 
+#advanced-search .multi-value .field-meta {
+    position: relative;
+    padding-right: 2 * $spacing-l;
+}
+
 #advanced-search .add-value {
-    display: block;
-    margin-left: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 #advanced-search .remove-value {
@@ -400,7 +410,7 @@ header nav a {
 }
 
 .site-title img {
-    max-height: (3 * $spacing-l);
+    max-height: (2 * $spacing-l);
     max-width: 100%;
 }
 
