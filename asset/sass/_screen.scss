@@ -201,14 +201,13 @@ textarea {
 .field {
     margin-bottom: $spacing-l;
     display: flex;
-    flex-wrap: wrap;
     width: 100%;
 }
 
 .field .field-meta {
     width: 25%;
     text-align: right;
-    line-height: 1.5 * $base-line-height;
+    padding: .375rem 0;
 }
 
 .field .field-meta label,
@@ -230,7 +229,6 @@ textarea {
 
 .field .inputs {
     width: 75%;
-    padding-left: $spacing-l;
 }
 
 .field .collapsible {
@@ -282,7 +280,6 @@ form input[type="submit"] {
     position: relative;
     width: 1.5 * $spacing-l;
     height: 1.5 * $spacing-l;
-    margin-left: $spacing-s;
 
     &:before {
         text-indent: 0;
@@ -1066,7 +1063,6 @@ a.collapse {
     min-height: $spacing-l;
     min-width: $spacing-l;
     text-align: center;
-    line-height: 1;
 }
 
 .expand:after,

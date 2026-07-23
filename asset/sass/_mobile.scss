@@ -15,7 +15,6 @@ footer {
 .media-list {
     width: 100%;
     text-align: left;
-    margin-bottom: $spacing-s;
 }
 
 .field .inputs{
@@ -231,6 +230,10 @@ footer {
 
 .index.search .results ul {
   columns: 1;
+}
+
+.field {
+    flex-wrap: wrap;
 }
 
 .field .inputs {
