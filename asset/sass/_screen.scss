@@ -239,7 +239,7 @@ textarea {
 
 .field .inputs ~ *,
 form input[type="submit"] {
-    margin-left: calc(25% + #{$spacing-l});
+    margin-left: calc(25% + #{$spacing-m});
     margin-top: $spacing-m;
 }
 
