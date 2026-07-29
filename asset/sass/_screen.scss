@@ -128,7 +128,8 @@ select {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    border: 1px solid $gray;
+    border: 0;
+    box-shadow: 0 0 0 1px $gray inset;
     border-radius: 2px;
     font-size: $base-font-size;
     line-height: $base-line-height;
