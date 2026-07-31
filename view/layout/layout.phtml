@@ -7,7 +7,6 @@ $this->headMeta()->setCharset('utf-8');
 $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1');
 $this->headTitle($siteTitle)->setSeparator(' · ');
 $this->headTitle()->append($this->setting('installation_title', 'Omeka S'));
-$this->headLink()->prependStylesheet('//fonts.googleapis.com/css?family=Crimson+Text:400,400italic,700,700italic');
 $this->headLink()->prependStylesheet($this->assetUrl('css/iconfonts.css', 'Omeka'));
 $this->headLink()->appendStylesheet($this->assetUrl('css/style.css'));
 $this->headScript()->prependFile($this->assetUrl('js/centerrow.js'));

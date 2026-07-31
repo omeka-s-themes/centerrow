@@ -14,3 +14,25 @@ $spacing-l: $base-line-height;
 $red: #C72E2E;
 $gray: #dedede;
 $dark-gray: #676767;
+
+//Fonts
+
+@mixin font-face(
+    $filename,
+    $family,
+    $style: normal,
+    $weight: 400
+) {
+    @font-face {
+        font-family: $family;
+        font-style: $style;
+        font-weight: $weight;
+        font-display: swap;
+        src: url("../fonts/#{$filename}.woff2") format("woff2"), url("../fonts/#{$filename}.woff") format("woff");
+    }
+}
+
+@include font-face('CrimsonText-Regular', 'Crimson Text');
+@include font-face('CrimsonText-Italic', 'Crimson Text', $style: italic);
+@include font-face('CrimsonText-Bold', 'Crimson Text', $weight: bold);
+@include font-face('CrimsonText-BoldItalic', 'Crimson Text', $style: italic, $weight: bold);
