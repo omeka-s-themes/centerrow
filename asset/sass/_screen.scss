@@ -239,7 +239,7 @@ textarea {
 }
 
 .field .inputs ~ *,
-form [type="submit"] {
+#advanced-search [type="submit"] {
     margin-left: calc(25% + #{$spacing-m});
     margin-top: $spacing-m;
 }
